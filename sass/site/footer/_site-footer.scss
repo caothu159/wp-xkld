@@ -1,53 +1,44 @@
 /* Site footer */
 
-#colophon {
+.site-footer {
+    background: -webkit-linear-gradient(left, #000, #2b2b2b);
 
-	.widget-area,
-	.site-info {
-		margin: calc(2 * #{$size__spacing-unit}) $size__spacing-unit;
+    .footer-widget-title {
+        font-size: 1rem;
+        font-weight: 600;
+        padding-top: 55px;
+        padding-bottom: 45px;
 
-		@include media(tablet) {
-			margin: calc(3 * #{$size__spacing-unit}) $size__site-margins;
-		}
-	}
+        .widget {
+            margin-bottom: 0px;
+        }
 
-	.widget-column {
-		display: flex;
-		flex-wrap: wrap;
-		.widget {
-			-webkit-hyphens: auto;
-			-moz-hyphens: auto;
-			-ms-hyphens: auto;
-			hyphens: auto;
-			width: 100%;
-			word-wrap: break-word;
-			@include media(desktop) {
-				margin-right: calc(3 * #{$size__spacing-unit});
-				width: calc(50% - (3 * #{$size__spacing-unit}));
-			}
-		}
-	}
+        p {
+            margin-bottom: 0px;
+        }
+    }
 
-	.site-info {
-		color: $color__text-light;
-		-webkit-hyphens: auto;
-		-moz-hyphens: auto;
-		-ms-hyphens: auto;
-		hyphens: auto;
-		word-wrap: break-word;
+    .footer-widget-address {
+        font-size: 16px;
+        line-height: 24px;
 
-		a {
-			color: inherit;
+        p {
+            margin-bottom: 5px;
+        }
+    }
 
-			&:hover {
-				text-decoration: none;
-				color: $color__link;
-			}
-		}
+    .footer-navigation {
+        .footer-navigation-title {
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+    }
 
-		.imprint,
-		.privacy-policy-link {
-			margin-right: $size__spacing-unit;
-		}
-	}
+    .imprint {
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        font-size: 14px;
+        padding: 20px 0;
+        text-align: center;
+    }
 }

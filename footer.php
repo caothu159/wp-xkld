@@ -7,7 +7,6 @@
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
  * @package WordPress
- * @subpackage Twenty_Nineteen
  * @since 1.0.0
  */
 
@@ -16,43 +15,57 @@
 </div><!-- #content -->
 
 <footer id="colophon" class="site-footer">
-    <?php get_template_part( 'template-parts/footer/footer', 'widgets' ); ?>
-    <div class="site-info">
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="imprint">
-            <?php
-            _e( 'Copyright Ⓒ 2019 viet-nhat.com. All rights reserved' );
-            ?>
-        </a>
+    <div class="container text-white">
+        <?php get_template_part( 'template-parts/footer/footer', 'title' ); ?>
 
-        <?php if ( has_nav_menu( 'about' ) ) : ?>
-            <nav class="footer-navigation" aria-label="<?php esc_attr_e( 'About Menu' ); ?>">
-                <?php
-                wp_nav_menu(
-                    array(
-                        'theme_location' => 'about',
-                        'menu_class'     => 'about-menu',
-                        'depth'          => 1,
-                    )
-                );
-                ?>
-            </nav><!-- .footer-navigation -->
-        <?php endif; ?>
+        <div class="site-info row">
 
-        <?php if ( has_nav_menu( 'footer' ) ) : ?>
-            <nav class="footer-navigation" aria-label="<?php esc_attr_e( 'Footer Menu' ); ?>">
-                <?php
-                wp_nav_menu(
-                    array(
-                        'theme_location' => 'footer',
-                        'menu_class'     => 'footer-menu',
-                        'depth'          => 1,
-                    )
-                );
-                ?>
-            </nav><!-- .footer-navigation -->
-        <?php endif; ?>
+            <?php if ( is_active_sidebar( 'sidebar-address' ) ) : ?>
 
-    </div><!-- .site-info -->
+                <aside class="widget-area sidebar-address col" role="complementary"
+                       aria-label="<?php esc_attr_e( 'Footer' ); ?>">
+                    <div class="widget-column footer-widget-address">
+                        <?php dynamic_sidebar( 'sidebar-address' ); ?>
+                    </div>
+                </aside><!-- .widget-area -->
+
+            <?php endif; ?>
+
+            <?php if ( has_nav_menu( 'about' ) ) : ?>
+                <nav class="footer-navigation col" aria-label="<?php esc_attr_e( 'About Menu' ); ?>">
+                    <span class="footer-navigation-title text-uppercase d-block mb-2">
+                        <?php _e( 'về chúng tôi' ); ?>
+                    </span>
+                    <?php wp_nav_menu(
+                        array(
+                            'theme_location' => 'about',
+                            'menu_class'     => 'about-menu',
+                            'depth'          => 1,
+                        )
+                    ); ?>
+                </nav><!-- .footer-about-navigation -->
+            <?php endif; ?>
+
+            <?php if ( has_nav_menu( 'footer' ) ) : ?>
+                <nav class="footer-navigation col" aria-label="<?php esc_attr_e( 'Footer Menu' ); ?>">
+                    <span class="footer-navigation-title text-uppercase d-block mb-2">
+                        <?php _e( 'xuất khẩu lao động nhật bản' ); ?>
+                    </span>
+                    <?php wp_nav_menu(
+                        array(
+                            'theme_location' => 'footer',
+                            'menu_class'     => 'footer-menu',
+                            'depth'          => 1,
+                        )
+                    ); ?>
+                </nav><!-- .footer-navigation -->
+            <?php endif; ?>
+        </div><!-- .site-info -->
+
+        <div class="imprint">
+            <?php _e( 'Copyright Ⓒ 2019 viet-nhat.com. All rights reserved' ); ?>
+        </div>
+    </div>
 </footer><!-- #colophon -->
 
 </div><!-- #page -->

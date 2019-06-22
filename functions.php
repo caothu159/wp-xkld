@@ -48,10 +48,37 @@ if ( ! function_exists( 'themeSetup' ) ):
 endif;
 add_action( 'after_setup_theme', 'themeSetup' );
 
+function theme_widgets_init() {
+
+    register_sidebar(
+        array(
+            'name'          => __( 'Footer' ),
+            'id'            => 'sidebar-address',
+            'description'   => __( 'Add widgets here to appear in your footer.' ),
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h2 class="widget-title">',
+            'after_title'   => '</h2>',
+        )
+    );
+    register_sidebar(
+        array(
+            'name'          => __( 'Footer Title' ),
+            'id'            => 'sidebar-title',
+            'description'   => __( 'Add widgets here to appear in your top footer.' ),
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h2 class="widget-title">',
+            'after_title'   => '</h2>',
+        )
+    );
+
+}
+
+add_action( 'widgets_init', 'theme_widgets_init' );
+
 function themeScripts() {
     wp_enqueue_style( 'theme-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
-
-    wp_style_add_data( 'theme-style', 'rtl', 'replace' );
 
     if ( has_nav_menu( 'main' ) ) {
         wp_enqueue_script( 'theme-priority-menu', get_theme_file_uri( '/js/priority-menu.js' ), array(), '1.1', true );
