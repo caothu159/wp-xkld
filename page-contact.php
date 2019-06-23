@@ -9,7 +9,7 @@
             while ( have_posts() ):
                 the_post();
 
-                get_template_part( 'template-parts/content/page', 'about' );
+                get_template_part( 'template-parts/content/page', 'contact' );
 
             endwhile; // End of the loop.
             ?>
