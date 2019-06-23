@@ -1,5 +1,6 @@
 <?php
 
+add_filter( 'body_class', 'themeBodyClasses' );
 function themeBodyClasses( $classes ) {
 
     if ( is_singular() ) {
@@ -15,27 +16,31 @@ function themeBodyClasses( $classes ) {
         $classes[] = 'image-filters-enabled';
     }
 
+    global $post;
+    if ( isset( $post ) ) {
+        $classes[] = $post->post_type . '-' . $post->post_name;
+    }
+
     return $classes;
 }
 
-add_filter( 'body_class', 'themeBodyClasses' );
 
+add_filter( 'post_class', 'themePostClasses', 10, 3 );
 function themePostClasses( $classes, $class, $post_id ) {
     $classes[] = 'entry';
 
     return $classes;
 }
 
-add_filter( 'post_class', 'themePostClasses', 10, 3 );
 
+add_action( 'wp_head', 'themePingbackHeader' );
 function themePingbackHeader() {
     if ( is_singular() && pings_open() ) {
         echo '<link rel="pingback" href="', esc_url( get_bloginfo( 'pingback_url' ) ), '">';
     }
 }
 
-add_action( 'wp_head', 'themePingbackHeader' );
-
+add_filter( 'get_the_archive_title', 'themeGetTheArchiveTitle' );
 function themeGetTheArchiveTitle() {
     if ( is_category() ) {
         $title = __( 'Category Archives: ' ) . '<span class="page-description">' . single_term_title( '',
@@ -67,7 +72,6 @@ function themeGetTheArchiveTitle() {
     return $title;
 }
 
-add_filter( 'get_the_archive_title', 'themeGetTheArchiveTitle' );
 
 function theme_can_show_post_thumbnail() {
     return apply_filters( 'theme_can_show_post_thumbnail',
@@ -78,6 +82,7 @@ function themeImageFiltersEnabled() {
     return 0 !== get_theme_mod( 'image_filter', 1 );
 }
 
+add_filter( 'wp_get_attachment_image_attributes', 'themePostThumbnailSizesAttr', 10, 1 );
 function themePostThumbnailSizesAttr( $attr ) {
 
     if ( is_admin() ) {
@@ -91,8 +96,8 @@ function themePostThumbnailSizesAttr( $attr ) {
     return $attr;
 }
 
-add_filter( 'wp_get_attachment_image_attributes', 'themePostThumbnailSizesAttr', 10, 1 );
 
+add_filter( 'wp_nav_menu', 'themeAddEllipsesToNav', 10, 2 );
 function themeAddEllipsesToNav( $nav_menu, $args ) {
 
     if ( 'menu-1' === $args->theme_location ):
@@ -121,8 +126,7 @@ function themeAddEllipsesToNav( $nav_menu, $args ) {
     return $nav_menu;
 }
 
-add_filter( 'wp_nav_menu', 'themeAddEllipsesToNav', 10, 2 );
-
+add_filter( 'nav_menu_link_attributes', 'themeNavMenuLinkAttributes', 10, 4 );
 function themeNavMenuLinkAttributes( $atts, $item, $args, $depth ) {
 
     // Add [aria-haspopup] and [aria-expanded] to menu items that have children
@@ -135,8 +139,8 @@ function themeNavMenuLinkAttributes( $atts, $item, $args, $depth ) {
     return $atts;
 }
 
-add_filter( 'nav_menu_link_attributes', 'themeNavMenuLinkAttributes', 10, 4 );
 
+add_filter( 'walker_nav_menu_start_el', 'themeAddDropdownIcons', 10, 4 );
 function themeAddDropdownIcons( $output, $item, $depth, $args ) {
 
     // Only add class to 'top level' items on the 'primary' menu.
@@ -182,8 +186,7 @@ function themeAddDropdownIcons( $output, $item, $depth, $args ) {
     return $output;
 }
 
-add_filter( 'walker_nav_menu_start_el', 'themeAddDropdownIcons', 10, 4 );
-
+add_filter( 'wp_nav_menu_objects', 'themeAddMobileParentNavMenuItems', 10, 2 );
 function themeAddMobileParentNavMenuItems( $sorted_menu_items, $args ) {
     static $pseudo_id = 0;
     if ( ! isset( $args->theme_location ) || 'menu-1' !== $args->theme_location ) {
@@ -208,8 +211,6 @@ function themeAddMobileParentNavMenuItems( $sorted_menu_items, $args ) {
 
     return $amended_menu_items;
 }
-
-add_filter( 'wp_nav_menu_objects', 'themeAddMobileParentNavMenuItems', 10, 2 );
 
 function themeHslToHex( $h, $s, $l, $to_hex = true ) {
 

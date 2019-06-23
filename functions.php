@@ -33,8 +33,8 @@ if ( ! function_exists( 'themeSetup' ) ):
         add_theme_support(
             'custom-logo',
             array(
-                'height'      => 190,
-                'width'       => 190,
+                'height'      => 60,
+                'width'       => 245,
                 'flex-width'  => false,
                 'flex-height' => false,
             )
@@ -101,11 +101,9 @@ function themeSkipLinkFocusFix() {
 
 add_action( 'wp_print_footer_scripts', 'themeSkipLinkFocusFix' );
 
+require get_template_directory() . '/inc/template-init.php';
 require get_template_directory() . '/classes/themeSvgIcons.php';
-
 require get_template_directory() . '/inc/template-functions.php';
-
 require get_template_directory() . '/inc/icon-functions.php';
-
 require get_template_directory() . '/inc/template-tags.php';
 
