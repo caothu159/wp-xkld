@@ -2,4 +2,41 @@
 
 .main-navigation {
     background: -webkit-linear-gradient(left, #000, #2b2b2b);
+
+    .main-menu {
+        text-transform: uppercase;
+    }
+
+    .menu-item {
+        height: 42px;
+        line-height: 42px;
+        padding: 0 10px;
+
+        a {
+            display: block;
+        }
+    }
+
+    .tel {
+        background: linear-gradient(left, #cc0202, red);
+        background: -webkit-linear-gradient(left, #cc0202, red);
+        background: -moz-linear-gradient(left, #cc0202, red);
+        background: -ms-linear-gradient(left, #cc0202, red);
+        background: -o-linear-gradient(left, #cc0202, red);
+        -moz-border-radius: 21px;
+        -webkit-border-radius: 21px;
+        border-radius: 21px;
+
+        height: 42px;
+        line-height: 40px;
+        font-size: 24px;
+        font-weight: 700;
+        padding: 0 21px;
+
+
+        a:hover,
+        a:active {
+            color: $color__link;
+        }
+    }
 }

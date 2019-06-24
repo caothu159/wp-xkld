@@ -15,9 +15,8 @@
     <nav class="main-navigation navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container">
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
                 <?php get_template_part( 'template-parts/header/header', 'menu' ); ?>
-                <?php get_template_part( 'template-parts/header/header', 'contact' ); ?>
             </div>
         </div>
     </nav>

@@ -63,3 +63,69 @@ function create_pages_fly( $page_name, $page_content = 'Starter content' ) {
         'post_name'    => $page_name
     ) );
 }
+
+wp_delete_nav_menu( 'Main menu' );
+if ( ! wp_get_nav_menu_object( 'Main menu' ) ) {
+    $main_menu_id = wp_create_nav_menu( 'Main menu' );
+
+    wp_update_nav_menu_item( $main_menu_id, 0, array(
+        'menu-item-title'  => __( 'Trang Chủ' ),
+        'menu-item-url'    => get_bloginfo( 'url' ),
+        'menu-item-status' => 'publish'
+    ) );
+
+    $jobs_category = get_category_by_slug( 'viec-lam' );
+    wp_update_nav_menu_item( $main_menu_id, 0, array(
+        'menu-item-title'     => __( 'Đơn hàng đi Nhật' ),
+        'menu-item-url'       => get_category_link( $jobs_category->term_id ),
+        'menu-item-object-id' => $jobs_category->term_id,
+        'menu-item-object'    => 'category',
+        'menu-item-type'      => 'taxonomy',
+        'menu-item-status'    => 'publish'
+    ) );
+
+    $news_category = get_category_by_slug( 'tin-tuc' );
+    wp_update_nav_menu_item( $main_menu_id, 0, array(
+        'menu-item-title'     => $news_category->name,
+        'menu-item-url'       => get_category_link( $news_category->term_id ),
+        'menu-item-object-id' => $news_category->term_id,
+        'menu-item-object'    => 'category',
+        'menu-item-type'      => 'taxonomy',
+        'menu-item-status'    => 'publish'
+    ) );
+
+    $about_page = get_page_by_title( 'about' );
+    wp_update_nav_menu_item( $main_menu_id, 0, array(
+        'menu-item-title'     => __( 'giới thiệu' ),
+        'menu-item-url'       => get_category_link( $about_page->ID ),
+        'menu-item-object-id' => $about_page->ID,
+        'menu-item-object'    => 'page',
+        'menu-item-type'      => 'post_type',
+        'menu-item-status'    => 'publish'
+    ) );
+
+    $contact_page = get_page_by_title( 'contact' );
+    wp_update_nav_menu_item( $main_menu_id, 0, array(
+        'menu-item-title'     => __( 'Liên hệ' ),
+        'menu-item-url'       => get_category_link( $contact_page->ID ),
+        'menu-item-object-id' => $contact_page->ID,
+        'menu-item-object'    => 'page',
+        'menu-item-type'      => 'post_type',
+        'menu-item-status'    => 'publish'
+    ) );
+
+    wp_update_nav_menu_item( $main_menu_id, 0, array(
+        'menu-item-title'   => '0986.111.979',
+        'menu-item-url'     => 'tel:0986111979',
+        'menu-item-classes' => 'tel',
+        'menu-item-type'    => 'custom',
+        'menu-item-status'  => 'publish'
+    ) );
+
+    $menu = array( 'menu-item-type' => 'custom', 'menu-item-url' => get_home_url( '/' ), 'menu-item-title' => 'Home' );
+
+    $locations         = get_theme_mod( 'nav_menu_locations' );
+    $locations['main'] = $main_menu_id;
+    set_theme_mod( 'nav_menu_locations', $locations );
+}
+

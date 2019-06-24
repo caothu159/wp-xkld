@@ -78,7 +78,8 @@ function theme_widgets_init() {
 add_action( 'widgets_init', 'theme_widgets_init' );
 
 function themeScripts() {
-    wp_enqueue_style( 'theme-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
+//    wp_enqueue_style( 'theme-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
+    wp_enqueue_style( 'theme-style', get_stylesheet_uri(), array(), uniqid() );
 
     if ( has_nav_menu( 'main' ) ) {
         wp_enqueue_script( 'theme-priority-menu', get_theme_file_uri( '/js/priority-menu.js' ), array(), '1.1', true );
