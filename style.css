@@ -14770,14 +14770,6 @@ h6 {
   font-family: "NonBreakingSpaceOverride", "Hoefler Text", "Baskerville Old Face", Garamond, "Times New Roman", serif;
 }
 
-.site-branding,
-.main-navigation ul.main-menu > li,
-.social-navigation,
-.author-description .author-bio,
-.nav-links {
-  line-height: 1.25;
-}
-
 h1 {
   font-size: 2.25em;
 }
@@ -15191,7 +15183,7 @@ a {
 }
 
 a:visited {
-  color: #f00;
+  color: #ffffff;
 }
 
 a:hover,
@@ -15212,6 +15204,41 @@ a:focus {
 /** === Main menu === */
 .main-navigation {
   background: -webkit-linear-gradient(left, #000, #2b2b2b);
+}
+
+.main-navigation .main-menu {
+  text-transform: uppercase;
+}
+
+.main-navigation .menu-item {
+  height: 42px;
+  line-height: 42px;
+  padding: 0 10px;
+}
+
+.main-navigation .menu-item a {
+  display: block;
+}
+
+.main-navigation .tel {
+  background: linear-gradient(left, #cc0202, red);
+  background: -webkit-linear-gradient(left, #cc0202, red);
+  background: -moz-linear-gradient(left, #cc0202, red);
+  background: -ms-linear-gradient(left, #cc0202, red);
+  background: -o-linear-gradient(left, #cc0202, red);
+  -moz-border-radius: 21px;
+  -webkit-border-radius: 21px;
+  border-radius: 21px;
+  height: 42px;
+  line-height: 40px;
+  font-size: 24px;
+  font-weight: 700;
+  padding: 0 21px;
+}
+
+.main-navigation .tel a:hover,
+.main-navigation .tel a:active {
+  color: #ffffff;
 }
 
 /*--------------------------------------------------------------

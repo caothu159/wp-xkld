@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10">
-            <div class="row">
+            <div class="row form">
                 <div class="col-md-6 form-left">
                     <h2 class="form-title text-white">Liên hệ<br>với chúng tôi</h2>
                     <div class="form_content">
@@ -9,7 +9,7 @@
                         <input type="text" placeholder="Số điện thoại">
                         <textarea placeholder="Lời nhắn"></textarea>
                         <button type="button"
-                                class="btn btn-outline-primary btn-block text-uppercase btn-lg">
+                                class="btn btn-block text-uppercase">
                             Gửi lời nhắn
                         </button>
                     </div>
