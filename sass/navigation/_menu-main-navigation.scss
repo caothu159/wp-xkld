@@ -1,7 +1,20 @@
 /** === Main menu === */
 
+body > .site {
+    padding-top: 100px;
+}
+
 .main-navigation {
     background: -webkit-linear-gradient(left, #000, #2b2b2b);
+
+    .navbar-brand {
+        transition: all 150ms ease-in-out;
+
+        img {
+            height: 60px;
+            transition: all 110ms ease-in-out;
+        }
+    }
 
     .main-menu {
         text-transform: uppercase;
@@ -41,6 +54,16 @@
         a:hover,
         a:active {
             color: $color__link;
+        }
+    }
+
+    &.has-fixed {
+        .navbar-brand {
+            padding: 0;
+
+            img {
+                height: 35px;
+            }
         }
     }
 }

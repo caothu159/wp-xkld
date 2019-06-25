@@ -12,7 +12,7 @@
 <div id="page" class="site">
     <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content' ); ?></a>
 
-    <nav class="main-navigation navbar navbar-expand-md navbar-dark bg-dark">
+    <nav class="main-navigation navbar fixed-top navbar-expand-md navbar-dark bg-dark">
         <div class="container">
 
             <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">

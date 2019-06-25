@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-10">
             <div class="row form">
-                <div class="col-md-6 form-left">
+                <div class="col-md-5 form-left">
                     <h2 class="form-title text-white">Liên hệ<br>với chúng tôi</h2>
                     <div class="form_content">
                         <input type="text" placeholder="Họ và tên">
@@ -14,7 +14,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="col-md-6 form-right">
+                <div class="col-md-7 form-right">
                     <ul>
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
