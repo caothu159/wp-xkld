@@ -5,7 +5,7 @@ body > .site {
 }
 
 .main-navigation {
-    background: -webkit-linear-gradient(left, #000, #2b2b2b);
+    background: linear-gradient(to right, #000, #2b2b2b);
 
     .navbar-brand {
         transition: all 150ms ease-in-out;
@@ -35,13 +35,7 @@ body > .site {
     }
 
     .tel {
-        background: linear-gradient(left, #cc0202, red);
-        background: -webkit-linear-gradient(left, #cc0202, red);
-        background: -moz-linear-gradient(left, #cc0202, red);
-        background: -ms-linear-gradient(left, #cc0202, red);
-        background: -o-linear-gradient(left, #cc0202, red);
-        -moz-border-radius: 21px;
-        -webkit-border-radius: 21px;
+        background: linear-gradient(to right, #cc0202, red);
         border-radius: 21px;
 
         height: 42px;

@@ -23,18 +23,15 @@
 
         &:before {
             content: '';
-            background: linear-gradient(left, #cc0202, red);
-            background: -webkit-linear-gradient(left, #cc0202, red);
-            background: -moz-linear-gradient(left, #cc0202, red);
-            background: -ms-linear-gradient(left, #cc0202, red);
-            background: -o-linear-gradient(left, #cc0202, red);
+            background: linear-gradient(to right, #cc0202, red);
             border-radius: 20px;
             box-shadow: 0 15px 34px rgba(0, 0, 0, 0.15);
-            position: absolute;
-            left: 0;
-            right: -75%;
-            top: 0;
+
             bottom: 0;
+            left: 0;
+            right: -100%;
+            top: 0;
+            position: absolute;
             z-index: -1;
         }
 
@@ -82,5 +79,29 @@
         box-shadow: 0 15px 34px rgba(0, 0, 0, 0.15);
         padding: 50px 40px;
         z-index: 2;
+
+        ul {
+            list-style: none;
+            padding-left: 0px;
+        }
+
+        li {
+            font-size: 16px;
+            list-style: none;
+
+            & > i {
+                display: inline-block;
+            }
+
+            p {
+                display: inline-block;
+            }
+
+            &.info {
+                i {
+                    color: #0068de;
+                }
+            }
+        }
     }
 }
