@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
-    <section id="primary" class="content-area">
-        <main id="main" class="site-main">
+    <section id="contact-primary" class="content-area contact-content-area">
+        <main id="contact-main" class="site-main contact-main">
 
             <?php
 
