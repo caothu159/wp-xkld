@@ -289,3 +289,30 @@ function themeHslToHex( $h, $s, $l, $to_hex = true ) {
 
     return "rgb($r, $g, $b)";
 }
+
+if ( ! function_exists( 'dump' ) ) {
+    function dump() {
+        $args = func_get_args();
+        ini_set( "highlight.comment", "#969896; font-style: italic" );
+        ini_set( "highlight.default", "#FFFFFF" );
+        ini_set( "highlight.html", "#D16568" );
+        ini_set( "highlight.keyword", "#7FA3BC; font-weight: bold" );
+        ini_set( "highlight.string", "#F2C47E" );
+        $output = highlight_string( "<?php\n\n" . var_export( $args, true ), true );
+        echo "<div style=\"background-color: #1C1E21; padding: 1rem\">{$output}</div>";
+    }
+}
+
+if ( ! function_exists( 'dd' ) ) {
+    function dd() {
+        $args = func_get_args();
+        call_user_func_array( 'dump', $args );
+        die();
+    }
+}
+if ( ! function_exists( 'd' ) ) {
+    function d() {
+        $args = func_get_args();
+        call_user_func_array( 'dump', $args );
+    }
+}

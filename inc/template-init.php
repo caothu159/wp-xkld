@@ -5,10 +5,13 @@ function check_pages_live() {
     if ( get_page_by_title( 'contact' ) == null ) {
         create_pages_fly( 'contact' );
     }
-    if ( get_page_by_title( 'about' ) == null ) {
-        create_pages_fly( 'about', <<<EOT
+    if ( ( $about_page = get_page_by_title( 'about' ) ) != null ) {
+        wp_delete_post( $about_page->ID );
+    }
+    create_pages_fly( 'about', <<<EOT
 <p><strong>GIỚI THIỆU CÔNG TY</strong></p>
-<p><br><br></p>
+<br />
+<br />
 <p><span style="font-weight: 400;">Chúng tôi là đơn vị cung ứng nguồn nhân lực xuất khẩu lao động, với mong muốn mang tới cho người lao động Việt Nam sự an tâm, tin tưởng về những đơn hàng đi Nhật Bản.</span></p>
 <p><span style="font-weight: 400;">Chúng tôi luôn cam kết : KHÔNG THU PHÍ MÔI GIỚI, chi phí thấp, thi tuyển liên tục và xuất cảnh nhanh chóng. Người lao động có thu nhập cao, ổn định, được đóng bảo hiểm y tế, bảo hiểm xã hội đầy đủ theo quy định của nước sở tại.</span></p>
 <p><strong>CÁC LĨNH VỰC HOẠT ĐỘNG CHÍNH CỦA CHÚNG TÔI</strong></p>
@@ -48,8 +51,7 @@ function check_pages_live() {
 <p><span style="font-weight: 400;">Hotline: 0986111979</span></p>
 <p><span style="font-weight: 400;">Điện thoại: 0243 9728 234 - 0986111979</span></p>
 EOT
-        );
-    }
+    );
 }
 
 function create_pages_fly( $page_name, $page_content = 'Starter content' ) {
