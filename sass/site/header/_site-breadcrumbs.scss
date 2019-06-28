@@ -1,0 +1,28 @@
+.the-breadcrumb {
+    background-color: #FFFFFF;
+    color: #000000;
+
+    a {
+        @include link-transition;
+        color: #000000;
+    }
+
+    a:visited {
+        text-decoration: none;
+    }
+
+    a:hover,
+    a:active {
+        color: $color__link-hover;
+        outline: 0;
+        text-decoration: none;
+    }
+
+    a:focus {
+        outline: none;
+        text-decoration: none;
+    }
+
+    .breadcrumbs {
+    }
+}

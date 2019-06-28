@@ -11,6 +11,11 @@ $font-family-sans-serif: "Roboto", sans-serif;
 $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier 10 Pitch", "Courier New", Courier, monospace;
 $font-family-base: $font-family-sans-serif;
 
+$breadcrumb-margin-bottom: 0;
+$breadcrumb-bg: transparent;
+$breadcrumb-padding-y: 10px;
+$breadcrumb-padding-x: 15px;
+
 @import "../../node_modules/bootstrap/scss/mixins";
 @import "../../node_modules/bootstrap/scss/root";
 @import "../../node_modules/bootstrap/scss/reboot";

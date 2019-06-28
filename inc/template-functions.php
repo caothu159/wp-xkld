@@ -303,6 +303,62 @@ if ( ! function_exists( 'dump' ) ) {
     }
 }
 
+if ( ! function_exists( 'the_breadcrumb' ) ) {
+    function the_breadcrumb() {
+        echo breadcrumb();
+    }
+}
+if ( ! function_exists( 'breadcrumb' ) ) {
+    function breadcrumb() {
+        if ( is_front_page() ) {
+            return;
+        }
+
+        if ( is_page() ) {
+            return;
+        }
+        $return = '<nav aria-label="breadcrumb"><ol class="breadcrumb">';
+
+        $return .= sprintf( '<li class="breadcrumb-item"><a href="%s">%s</a></li>',
+            get_option( 'home' ),
+            __( 'Trang chủ' )
+        );
+
+        // Check if the current page is a category, an archive or a single page. If so show the category or archive name.
+        if ( is_category() || is_single() ) {
+            foreach ( get_the_category() as $term ) {
+                $return .= sprintf( '<li class="breadcrumb-item"><a href="%s">%s</a></li>',
+                    get_term_link( $term ),
+                    $term->name
+                );
+            }
+        } elseif ( is_archive() || is_single() ) {
+            if ( is_day() ) {
+                printf( __( '%s' ), get_the_date() );
+            } elseif ( is_month() ) {
+                printf( __( '%s' ),
+                    get_the_date( _x( 'F Y', 'monthly archives date format' ) ) );
+            } elseif ( is_year() ) {
+                printf( __( '%s', 'text_domain' ),
+                    get_the_date( _x( 'Y', 'yearly archives date format' ) ) );
+            } else {
+                _e( 'Blog Archives' );
+            }
+        }
+
+        // If the current page is a single post, show its title with the separator
+        if ( is_single() ) {
+            $return .= sprintf( '<li class="breadcrumb-item active" aria-current="page">%s</li>',
+                get_the_title()
+            );
+        }
+
+        $return .= '</ol></nav>';
+
+        return $return;
+    }
+}
+
 if ( ! function_exists( 'dd' ) ) {
     function dd() {
         $args = func_get_args();

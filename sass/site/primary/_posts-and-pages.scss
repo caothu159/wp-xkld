@@ -15,9 +15,25 @@
     z-index: 1;
 }
 
-.site-main {
-    .container {
+.type-page,
+.type-post {
+    .entry-content {
         background-color: #FFFFFF;
+        border-radius: 15px;
+    }
+}
+
+.single-post {
+    .site-content {
+        padding: 40px 0px;
+    }
+
+    .entry-title {
+        color: #333;
+    }
+
+    .entry-content {
+
     }
 }
 
@@ -40,8 +56,6 @@
     }
 
     .entry-title {
-
-        @include post-section-dash;
         margin: 0;
 
         a {

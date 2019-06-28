@@ -6,8 +6,8 @@
  * @since 1.0.0
  */
 
-if ( ! function_exists( 'themePostedOn' ) ):
-    function themePostedOn() {
+if ( ! function_exists( 'theme_posted_on' ) ):
+    function theme_posted_on() {
         $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
         if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
             $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
@@ -38,60 +38,6 @@ if ( ! function_exists( 'themePostedBy' ) ):
             __( 'Posted by' ),
             esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
             esc_html( get_the_author() )
-        );
-    }
-endif;
-
-if ( ! function_exists( 'themeEntryFooter' ) ):
-    function themeEntryFooter() {
-
-        // Hide author, post date, category and tag text for pages.
-        if ( 'post' === get_post_type() ) {
-
-            themePostedBy();
-            themePostedOn();
-
-            /* translators: used between list items, there is a space after the comma. */
-            $categories_list = get_the_category_list( __( ', ' ) );
-            if ( $categories_list ) {
-                printf(
-                /* translators: 1: SVG icon. 2: posted in label, only visible to screen readers. 3: list of categories. */
-                    '<span class="cat-links">%1$s<span class="screen-reader-text">%2$s</span>%3$s</span>',
-                    theme_get_icon_svg( 'archive', 16 ),
-                    __( 'Posted in' ),
-                    $categories_list
-                ); // WPCS: XSS OK.
-            }
-
-            /* translators: used between list items, there is a space after the comma. */
-            $tags_list = get_the_tag_list( '', __( ', ' ) );
-            if ( $tags_list ) {
-                printf(
-                /* translators: 1: SVG icon. 2: posted in label, only visible to screen readers. 3: list of tags. */
-                    '<span class="tags-links">%1$s<span class="screen-reader-text">%2$s </span>%3$s</span>',
-                    theme_get_icon_svg( 'tag', 16 ),
-                    __( 'Tags:' ),
-                    $tags_list
-                ); // WPCS: XSS OK.
-            }
-        }
-
-        // Edit post link.
-        edit_post_link(
-            sprintf(
-                wp_kses(
-                /* translators: %s: Name of current post. Only visible to screen readers. */
-                    __( 'Edit <span class="screen-reader-text">%s</span>' ),
-                    array(
-                        'span' => array(
-                            'class' => array(),
-                        ),
-                    )
-                ),
-                get_the_title()
-            ),
-            '<span class="edit-link">' . theme_get_icon_svg( 'edit', 16 ),
-            '</span>'
         );
     }
 endif;

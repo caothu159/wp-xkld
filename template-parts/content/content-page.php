@@ -10,18 +10,19 @@
 
 ; ?>
 <div class="container">
+    <div class="row">
 
-    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-        <?php if ( ! theme_can_show_post_thumbnail() ): ?>
-            <header class="entry-header">
-                <?php get_template_part( 'template-parts/header/entry', 'header' ); ?>
-            </header>
-        <?php endif; ?>
+        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+            <?php if ( ! theme_can_show_post_thumbnail() ): ?>
+                <header class="entry-header">
+                    <?php get_template_part( 'template-parts/header/entry', 'header' ); ?>
+                </header>
+            <?php endif; ?>
 
-        <div class="entry-content">
-            <?php the_content(); ?>
-        </div><!-- .entry-content -->
+            <div class="entry-content p-3">
+                <?php the_content(); ?>
+            </div><!-- .entry-content -->
 
-    </article><!-- #post-<?php the_ID(); ?> -->
-
+        </article><!-- #post-<?php the_ID(); ?> -->
+    </div>
 </div>
