@@ -1,9 +1,5 @@
 <?php
 
-//sidebar-title
-//dd( $active_widgets );
-//dd( get_option( 'widget_text', array() ) );
-// That was easy. Now a RSS widget. More fields, more fun!
 update_option( 'widget_text', array(
     1 => array(
         'title'  => '',
