@@ -129,10 +129,10 @@ EOT
 
     wp_delete_nav_menu( 'Footer About' );
     if ( ! wp_get_nav_menu_object( 'Footer About' ) ) {
-        $footer_menu_id = wp_create_nav_menu( 'Footer About' );
+        $about_menu_id = wp_create_nav_menu( 'Footer About' );
 
         $about_page = get_page_by_title( 'about' );
-        wp_update_nav_menu_item( $footer_menu_id, 0, array(
+        wp_update_nav_menu_item( $about_menu_id, 0, array(
             'menu-item-title'     => __( 'Giới thiệu' ),
             'menu-item-url'       => get_category_link( $about_page->ID ),
             'menu-item-object-id' => $about_page->ID,
@@ -142,8 +142,37 @@ EOT
         ) );
 
         $news_category = get_category_by_slug( 'tin-tuc' );
-        wp_update_nav_menu_item( $footer_menu_id, 0, array(
+        wp_update_nav_menu_item( $about_menu_id, 0, array(
             'menu-item-title'     => __( 'Tầm nhìn - Sứ mệnh' ),
+            'menu-item-url'       => get_category_link( $news_category->term_id ),
+            'menu-item-object-id' => $news_category->term_id,
+            'menu-item-object'    => 'category',
+            'menu-item-type'      => 'taxonomy',
+            'menu-item-status'    => 'publish'
+        ) );
+
+        $locations          = get_theme_mod( 'nav_menu_locations' );
+        $locations['about'] = $about_menu_id;
+        set_theme_mod( 'nav_menu_locations', $locations );
+    }
+
+    wp_delete_nav_menu( 'Footer Menu' );
+    if ( ! wp_get_nav_menu_object( 'Footer Menu' ) ) {
+        $footer_menu_id = wp_create_nav_menu( 'Footer Menu' );
+
+        $jobs_category = get_category_by_slug( 'viec-lam' );
+        wp_update_nav_menu_item( $footer_menu_id, 0, array(
+            'menu-item-title'     => __( 'Đơn hàng đi Nhật' ),
+            'menu-item-url'       => get_category_link( $jobs_category->term_id ),
+            'menu-item-object-id' => $jobs_category->term_id,
+            'menu-item-object'    => 'category',
+            'menu-item-type'      => 'taxonomy',
+            'menu-item-status'    => 'publish'
+        ) );
+
+        $news_category = get_category_by_slug( 'tin-tuc' );
+        wp_update_nav_menu_item( $footer_menu_id, 0, array(
+            'menu-item-title'     => $news_category->name,
             'menu-item-url'       => get_category_link( $news_category->term_id ),
             'menu-item-object-id' => $news_category->term_id,
             'menu-item-object'    => 'category',

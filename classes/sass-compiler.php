@@ -17,6 +17,8 @@ if ( env( 'WP_ENV' ) != 'development' ) {
 if ( ! class_exists( '\Leafo\ScssPhp\Compiler' ) ) {
     return;
 }
+
+return;
 $scss_compiler = new \Leafo\ScssPhp\Compiler();
 $scss_compiler->setImportPaths( get_template_directory() );
 $scss_compiler->setFormatter( \Leafo\ScssPhp\Formatter\Expanded::class );
