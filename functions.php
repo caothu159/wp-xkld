@@ -48,6 +48,14 @@ if ( ! function_exists( 'themeSetup' ) ):
 endif;
 add_action( 'after_setup_theme', 'themeSetup' );
 
+add_action( 'admin_init', 'allow_contributor_uploads' );
+function allow_contributor_uploads() {
+    $contributor = get_role( 'contributor' );
+    $contributor->add_cap( 'upload_files' );
+    $contributor->add_cap( 'edit_published_posts' );
+    $contributor->add_cap( 'edit_others_posts' );
+}
+
 function theme_widgets_init() {
 
     register_sidebar(
@@ -77,20 +85,21 @@ function theme_widgets_init() {
 
 add_action( 'widgets_init', 'theme_widgets_init' );
 
-function themeScripts() {
+add_action( 'wp_enqueue_scripts', 'theme_enqueue' );
+function theme_enqueue() {
 //    wp_enqueue_style( 'theme-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
     wp_enqueue_style( 'theme-style', get_stylesheet_uri(), array(), uniqid() );
+    wp_enqueue_script( 'theme-fixed-menu', get_theme_file_uri( '/js/stop-back.js' ), array(), uniqid(), true );
 
     if ( has_nav_menu( 'main' ) ) {
 //        wp_enqueue_script( 'theme-priority-menu', get_theme_file_uri( '/js/priority-menu.js' ), array(), '1.1', true );
-        wp_enqueue_script( 'theme-touch-navigation', get_theme_file_uri( '/js/touch-keyboard-navigation.js' ), array(),
-            '1.1', true );
+//        wp_enqueue_script( 'theme-touch-navigation', get_theme_file_uri( '/js/touch-keyboard-navigation.js' ), array(),
+//            '1.1', true );
 //        wp_enqueue_script( 'theme-fixed-menu', get_theme_file_uri( '/js/fixed-menu.js' ), array(), '1.0', true );
         wp_enqueue_script( 'theme-fixed-menu', get_theme_file_uri( '/js/fixed-menu.js' ), array(), uniqid(), true );
     }
 }
 
-add_action( 'wp_enqueue_scripts', 'themeScripts' );
 
 function themeSkipLinkFocusFix() {
     ?>
@@ -106,7 +115,7 @@ add_action( 'wp_print_footer_scripts', 'themeSkipLinkFocusFix' );
 
 require get_template_directory() . '/inc/template-init.php';
 require get_template_directory() . '/classes/themeSvgIcons.php';
+require get_template_directory() . '/classes/sass-compiler.php';
 require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/icon-functions.php';
 require get_template_directory() . '/inc/template-tags.php';
-
