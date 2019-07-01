@@ -34,7 +34,7 @@
 
             <?php if ( has_nav_menu( 'about' ) ) : ?>
                 <nav class="footer-navigation col" aria-label="<?php esc_attr_e( 'About Menu' ); ?>">
-                    <span class="footer-navigation-title text-uppercase d-block mb-2">
+                    <span class="footer-navigation-title text-uppercase d-block mb-4">
                         <?php _e( 'về chúng tôi' ); ?>
                     </span>
                     <?php wp_nav_menu(
@@ -49,7 +49,7 @@
 
             <?php if ( has_nav_menu( 'footer' ) ) : ?>
                 <nav class="footer-navigation col" aria-label="<?php esc_attr_e( 'Footer Menu' ); ?>">
-                    <span class="footer-navigation-title text-uppercase d-block mb-2">
+                    <span class="footer-navigation-title text-uppercase d-block mb-4">
                         <?php _e( 'xuất khẩu lao động nhật bản' ); ?>
                     </span>
                     <?php wp_nav_menu(
