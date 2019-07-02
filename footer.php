@@ -50,7 +50,7 @@
             <?php if ( has_nav_menu( 'footer' ) ) : ?>
                 <nav class="footer-navigation col" aria-label="<?php esc_attr_e( 'Footer Menu' ); ?>">
                     <span class="footer-navigation-title text-uppercase d-block mb-4">
-                        <?php _e( 'xuất khẩu lao động nhật bản' ); ?>
+                        <?php _e( 'xuất khẩu lao động Singapore' ); ?>
                     </span>
                     <?php wp_nav_menu(
                         array(
@@ -64,7 +64,7 @@
         </div><!-- .site-info -->
 
         <div class="imprint">
-            <?php _e( 'Copyright Ⓒ 2019 viet-nhat.com. All rights reserved' ); ?>
+            <?php _e( 'Copyright Ⓒ 2019 xuatkhaulaodongsingapore.vn. All rights reserved' ); ?>
         </div>
     </div>
 </footer><!-- #colophon -->

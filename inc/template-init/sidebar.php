@@ -3,7 +3,7 @@
 update_option( 'widget_text', array(
     1 => array(
         'title'  => '',
-        'text'   => 'TRUNG TÂM TUYỂN DỤNG LAO ĐỘNG NHẬT BẢN',
+        'text'   => 'TRUNG TÂM TUYỂN DỤNG LAO ĐỘNG SINGAPORE',
         'filter' => true,
         'visual' => true,
     ),
