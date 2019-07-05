@@ -31,6 +31,7 @@
     </nav>
 
     <?php get_template_part( 'template-parts/header/header', 'breadcrumb' ); ?>
+    <?php get_template_part( 'template-parts/content/home', 'slider' ); ?>
 
     <header id="masthead"
             class="<?php echo is_singular() && theme_can_show_post_thumbnail() ? 'site-header featured-image' : 'site-header'; ?>">

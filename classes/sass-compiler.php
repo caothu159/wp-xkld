@@ -7,6 +7,9 @@
  * @see SASS Homepage: http://sass-lang.com/
  * @see scssphp, the used compiler (in PHP): http://leafo.net/scssphp/
  */
+if ( is_admin() ) {
+    return;
+}
 
 if ( ! function_exists( 'env' ) ) {
     return;
