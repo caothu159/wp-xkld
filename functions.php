@@ -87,16 +87,12 @@ add_action( 'widgets_init', 'theme_widgets_init' );
 
 add_action( 'wp_enqueue_scripts', 'theme_enqueue' );
 function theme_enqueue() {
-//    wp_enqueue_style( 'theme-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
-    wp_enqueue_style( 'theme-style', get_stylesheet_uri(), array(), uniqid() );
-    wp_enqueue_script( 'theme-stop-back', get_theme_file_uri( '/js/stop-back.js' ), array(), uniqid(), true );
+    wp_enqueue_style( 'theme-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
+    wp_enqueue_script( 'theme-stop-back', get_theme_file_uri( '/js/stop-back.js' ), array(),
+        wp_get_theme()->get( 'Version' ), true );
 
     if ( has_nav_menu( 'main' ) ) {
-//        wp_enqueue_script( 'theme-priority-menu', get_theme_file_uri( '/js/priority-menu.js' ), array(), '1.1', true );
-//        wp_enqueue_script( 'theme-touch-navigation', get_theme_file_uri( '/js/touch-keyboard-navigation.js' ), array(),
-//            '1.1', true );
-//        wp_enqueue_script( 'theme-fixed-menu', get_theme_file_uri( '/js/fixed-menu.js' ), array(), '1.0', true );
-        wp_enqueue_script( 'theme-fixed-menu', get_theme_file_uri( '/js/fixed-menu.js' ), array(), uniqid(), true );
+        wp_enqueue_script( 'theme-fixed-menu', get_theme_file_uri( '/js/fixed-menu.js' ), array(), '1.0', true );
     }
 }
 
@@ -113,9 +109,7 @@ function themeSkipLinkFocusFix() {
 
 add_action( 'wp_print_footer_scripts', 'themeSkipLinkFocusFix' );
 
-require get_template_directory() . '/inc/template-init.php';
 require get_template_directory() . '/classes/themeSvgIcons.php';
-require get_template_directory() . '/classes/sass-compiler.php';
 require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/icon-functions.php';
 require get_template_directory() . '/inc/template-tags.php';
