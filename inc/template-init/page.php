@@ -3,7 +3,7 @@
 get_template_part( 'inc/template-init/page/home' );
 get_template_part( 'inc/template-init/page/contact' );
 get_template_part( 'inc/template-init/page/about' );
-get_template_part( 'inc/template-init/page/quy-trinh' );
+get_template_part( 'inc/template-init/page/career' );
 
 function create_pages_fly( $page_name, $page_content = 'Starter content' ) {
     // Insert the post into the database

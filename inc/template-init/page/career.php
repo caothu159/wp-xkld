@@ -1,9 +1,9 @@
 <?php
-
-while ( get_page_by_title( 'quy trinh' ) != null ) {
-    wp_delete_post( get_page_by_title( 'quy trinh' )->ID, true );
+return;
+while ( get_page_by_title( 'career' ) != null ) {
+    wp_delete_post( get_page_by_title( 'career' )->ID, true );
 }
-create_pages_fly( 'quy trinh', <<<EOT
+create_pages_fly( 'career', <<<EOT
 <h2 class="text-center"><strong>Quy trình tuyển dụng</strong></h2>
 <ul>
  <li><span>TIẾP NHẬN HỒ SƠ</span>Cán bộ hướng dẫn Thực tập sinh điền đầy đủ thông tin trong biểu mẫu và chụp ảnh hồ sơ.</li>
@@ -23,7 +23,7 @@ $img = str_replace( ' ', '+', $img );
 
 $decoded = base64_decode( $img );
 
-$filename        = 'quy-trinh.jpg';
+$filename        = 'career-img.jpg';
 $hashed_filename = md5( $filename . uniqid() ) . '_' . $filename;
 // @new
 $image_upload = file_put_contents( $upload_path . $hashed_filename, $decoded );
@@ -89,11 +89,12 @@ if ( post_exists( $title ) ) {
         $attachment['ID'] = $attachment_exists->ID;
     }
 }
-$attach_id = wp_insert_attachment( $attachment, $filename );
+$attachment_id = wp_insert_attachment( $attachment, $filename );
 
 // Without that I'm getting a debug error!?
 if ( ! function_exists( 'wp_generate_attachment_metadata' ) ) {
     require_once( ABSPATH . 'wp-admin/includes/image.php' );
 }
-$attach_data = wp_generate_attachment_metadata( $attach_id, $filename );
-wp_update_attachment_metadata( $attach_id, $attach_data );
+$attachment = wp_generate_attachment_metadata( $attachment_id, $filename );
+wp_update_attachment_metadata( $attachment_id, $attachment );
+set_post_thumbnail( get_page_by_title( 'career' )->ID, $attachment_id );
