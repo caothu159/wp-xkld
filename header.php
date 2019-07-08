@@ -12,7 +12,7 @@
 <div id="page" class="site">
     <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content' ); ?></a>
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark" style="visibility: hidden;">
+    <nav class="main-navigation navbar navbar-expand-md" style="visibility: hidden;">
         <div class="container">
 
             <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
@@ -31,7 +31,6 @@
     </nav>
 
     <?php get_template_part( 'template-parts/header/header', 'breadcrumb' ); ?>
-    <?php get_template_part( 'template-parts/content/home', 'slider' ); ?>
 
     <header id="masthead"
             class="<?php echo is_singular() && theme_can_show_post_thumbnail() ? 'site-header featured-image' : 'site-header'; ?>">

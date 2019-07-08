@@ -1,10 +1,11 @@
 (function () {
+    let navContainers = document.querySelectorAll('.main-navigation');
 
     function hasFixed() {
-        let scrollTop = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop;
-        let navContainer = document.querySelector('.main-navigation');
-
-        navContainer.classList.toggle("has-fixed", scrollTop > 0);
+        navContainers.forEach(function (navContainer) {
+            let scrollTop = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop;
+            navContainer.classList.toggle("has-fixed", scrollTop > 0);
+        });
     }
 
     /**
