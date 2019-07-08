@@ -11,9 +11,7 @@ create_pages_fly( 'contact', <<<EOT
         <input type="text" placeholder="Số điện thoại">
         <textarea placeholder="Lời nhắn"></textarea>
         <button type="button"
-                class="btn btn-block text-uppercase">
-            Gửi lời nhắn
-        </button>
+                class="btn btn-block text-uppercase">Gửi lời nhắn</button>
     </div>
 </div>
 <div class="col-md-7 form-right">
@@ -36,9 +34,7 @@ create_pages_fly( 'contact', <<<EOT
         </li>
 
         <li class="info">
-            <p><i>Nếu bạn không tiện gọi điện hay nhắn tin trao đổi
-                    ngay lúc này, đừng ngần ngại để lại thông tin, chúng tôi sẽ gọi lại và tư
-                    vấn cho bạn.</i></p>
+            <p><i>Nếu bạn không tiện gọi điện hay nhắn tin trao đổi ngay lúc này, đừng ngần ngại để lại thông tin, chúng tôi sẽ gọi lại và tư vấn cho bạn.</i></p>
         </li>
     </ul>
 </div>
