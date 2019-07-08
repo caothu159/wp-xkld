@@ -6,13 +6,11 @@ function create_example() {
         return;
     }
 
-    $init_folder = get_template_directory() . '/inc/template-init/';
-
-    require $init_folder . 'category.php';
-    require $init_folder . 'post.php';
-    require $init_folder . 'page.php';
-    require $init_folder . 'menu.php';
-    require $init_folder . 'sidebar.php';
+    get_template_part( 'inc/template-init/category' );
+    get_template_part( 'inc/template-init/post' );
+    get_template_part( 'inc/template-init/page' );
+    get_template_part( 'inc/template-init/menu' );
+    get_template_part( 'inc/template-init/sidebar' );
 }
 
 //Let Contributor Role to Upload Media

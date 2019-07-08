@@ -48,6 +48,16 @@ if ( ! function_exists( 'themeSetup' ) ):
 endif;
 add_action( 'after_setup_theme', 'themeSetup' );
 
+
+add_filter( 'upload_mimes', 'enable_extended_upload' );
+function enable_extended_upload( $mimes = array() ) {
+    $mimes['jpg'] = 'image/jpeg';
+    unset( $mimes['exe'] );
+    unset( $mimes['bin'] );
+
+    return $mimes;
+}
+
 add_action( 'admin_init', 'allow_contributor_uploads' );
 function allow_contributor_uploads() {
     $contributor = get_role( 'contributor' );
