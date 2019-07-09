@@ -31,7 +31,7 @@ $file_path_elements = pathinfo( $scss_css );
 $file_name          = $file_path_elements['filename'];
 $string_sass        = file_get_contents( $scss_folder . $file_name . ".scss" );
 $string_css         = $scss_compiler->compile( $string_sass );
-if ( ! class_exists( '\Padaliyajay\PHPAutoprefixer\Autoprefixer' ) ) {
+if ( class_exists( '\Padaliyajay\PHPAutoprefixer\Autoprefixer' ) ) {
     $string_css = ( new \Padaliyajay\PHPAutoprefixer\Autoprefixer( $string_css ) )->compile();
 }
 file_put_contents( $scss_folder . $file_name . ".css", $string_css );
