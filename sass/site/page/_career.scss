@@ -71,7 +71,7 @@
         width: calc(50% - #{$career__size-counter / 2 + $career__size-point});
 
         & + li {
-            margin-top: - 55px + $career__size-counter / 2;
+            margin-top: -55px + $career__size-counter / 2;
         }
 
         span {
@@ -89,7 +89,7 @@
             text-align: left;
 
             &:before {
-                left: - $career__size-counter - $career__size-point;
+                left: -$career__size-counter - $career__size-point;
                 right: auto;
             }
 
@@ -106,7 +106,7 @@
 
             &:before {
                 left: auto;
-                right: - $career__size-counter - $career__size-point;
+                right: -$career__size-counter - $career__size-point;
             }
 
             &:after {
@@ -126,7 +126,7 @@
             font-size: 20px;
             font-weight: 700;
             height: $career__size-counter;
-            line-height: $career__size-counter;
+            line-height: $career__size-counter - 3px;
             text-align: center;
             width: $career__size-counter;
 
