@@ -1,6 +1,10 @@
 <?php
 
-$locations = get_theme_mod( 'nav_menu_locations' );
+$locations     = get_theme_mod( 'nav_menu_locations' );
+$jobs_category = get_category_by_slug( 'viec-lam' );
+$news_category = get_category_by_slug( 'tin-tuc' );
+$about_page    = get_page_by_path( 'about' );
+$contact_page  = get_page_by_path( 'contact' );
 
 wp_delete_nav_menu( 'Main menu' );
 if ( ! wp_get_nav_menu_object( 'Main menu' ) ) {
@@ -12,7 +16,6 @@ if ( ! wp_get_nav_menu_object( 'Main menu' ) ) {
         'menu-item-status' => 'publish'
     ) );
 
-    $jobs_category = get_category_by_slug( 'viec-lam' );
     wp_update_nav_menu_item( $main_menu_id, 0, array(
         'menu-item-title'     => __( 'Đơn hàng đi Nhật' ),
         'menu-item-url'       => get_category_link( $jobs_category->term_id ),
@@ -22,7 +25,6 @@ if ( ! wp_get_nav_menu_object( 'Main menu' ) ) {
         'menu-item-status'    => 'publish'
     ) );
 
-    $news_category = get_category_by_slug( 'tin-tuc' );
     wp_update_nav_menu_item( $main_menu_id, 0, array(
         'menu-item-title'     => $news_category->name,
         'menu-item-url'       => get_category_link( $news_category->term_id ),
@@ -32,7 +34,6 @@ if ( ! wp_get_nav_menu_object( 'Main menu' ) ) {
         'menu-item-status'    => 'publish'
     ) );
 
-    $about_page = get_page_by_title( 'about' );
     wp_update_nav_menu_item( $main_menu_id, 0, array(
         'menu-item-title'     => __( 'giới thiệu' ),
         'menu-item-url'       => get_category_link( $about_page->ID ),
@@ -42,7 +43,6 @@ if ( ! wp_get_nav_menu_object( 'Main menu' ) ) {
         'menu-item-status'    => 'publish'
     ) );
 
-    $contact_page = get_page_by_title( 'contact' );
     wp_update_nav_menu_item( $main_menu_id, 0, array(
         'menu-item-title'     => __( 'Liên hệ' ),
         'menu-item-url'       => get_category_link( $contact_page->ID ),
@@ -67,7 +67,6 @@ wp_delete_nav_menu( 'Footer About' );
 if ( ! wp_get_nav_menu_object( 'Footer About' ) ) {
     $about_menu_id = wp_create_nav_menu( 'Footer About' );
 
-    $about_page = get_page_by_title( 'about' );
     wp_update_nav_menu_item( $about_menu_id, 0, array(
         'menu-item-title'     => __( 'Giới thiệu' ),
         'menu-item-url'       => get_category_link( $about_page->ID ),
@@ -77,7 +76,6 @@ if ( ! wp_get_nav_menu_object( 'Footer About' ) ) {
         'menu-item-status'    => 'publish'
     ) );
 
-    $news_category = get_category_by_slug( 'tin-tuc' );
     wp_update_nav_menu_item( $about_menu_id, 0, array(
         'menu-item-title'     => __( 'Tầm nhìn - Sứ mệnh' ),
         'menu-item-url'       => get_category_link( $news_category->term_id ),
@@ -94,7 +92,6 @@ wp_delete_nav_menu( 'Footer Menu' );
 if ( ! wp_get_nav_menu_object( 'Footer Menu' ) ) {
     $footer_menu_id = wp_create_nav_menu( 'Footer Menu' );
 
-    $jobs_category = get_category_by_slug( 'viec-lam' );
     wp_update_nav_menu_item( $footer_menu_id, 0, array(
         'menu-item-title'     => __( 'Đơn hàng đi Nhật' ),
         'menu-item-url'       => get_category_link( $jobs_category->term_id ),
@@ -104,7 +101,6 @@ if ( ! wp_get_nav_menu_object( 'Footer Menu' ) ) {
         'menu-item-status'    => 'publish'
     ) );
 
-    $news_category = get_category_by_slug( 'tin-tuc' );
     wp_update_nav_menu_item( $footer_menu_id, 0, array(
         'menu-item-title'     => $news_category->name,
         'menu-item-url'       => get_category_link( $news_category->term_id ),

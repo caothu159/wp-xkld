@@ -1,6 +1,6 @@
 <?php
-while ( get_page_by_title( 'about' ) != null ) {
-    wp_delete_post( get_page_by_title( 'about' )->ID, true );
+while ( get_page_by_path( 'about' ) != null ) {
+    wp_delete_post( get_page_by_path( 'about' )->ID, true );
 }
 
 create_pages_fly( 'about', <<<EOT
@@ -46,4 +46,4 @@ create_pages_fly( 'about', <<<EOT
 <p><span>Hotline: 0986111979</span></p>
 <p><span>Điện thoại: 0243 9728 234 - 0986111979</span></p>
 EOT
-);
+    , 'Giới thiệu' );

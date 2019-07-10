@@ -1,6 +1,6 @@
 <?php
-while ( get_page_by_title( 'career' ) != null ) {
-    wp_delete_post( get_page_by_title( 'career' )->ID, true );
+while ( get_page_by_path( 'career' ) != null ) {
+    wp_delete_post( get_page_by_path( 'career' )->ID, true );
 }
 create_pages_fly( 'career', <<<EOT
 <h2 class="text-center"><strong>Quy trình tuyển dụng</strong></h2>
@@ -12,4 +12,4 @@ create_pages_fly( 'career', <<<EOT
 <li><span>XUẤT CẢNH</span>Xuất cảnh theo lịch trình định sẵn, mọi thủ tục xuất cảnh sẽ được hướng dẫn và hỗ trợ.</li>
 </ul>
 EOT
-);
+    , 'Quy trình tuyển dụng' );

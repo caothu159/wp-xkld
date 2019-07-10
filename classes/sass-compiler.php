@@ -7,21 +7,14 @@
  * @see SASS Homepage: http://sass-lang.com/
  * @see scssphp, the used compiler (in PHP): http://leafo.net/scssphp/
  */
-if ( is_admin() ) {
+if ( is_admin()
+     || ! function_exists( 'env' )
+     || env( 'WP_ENV' ) != 'development'
+     || ! class_exists( '\Leafo\ScssPhp\Compiler' ) ) {
     return;
 }
 
-if ( ! function_exists( 'env' ) ) {
-    return;
-}
-if ( env( 'WP_ENV' ) != 'development' ) {
-    return;
-}
-if ( ! class_exists( '\Leafo\ScssPhp\Compiler' ) ) {
-    return;
-}
-
-return;
+//return;
 $scss_compiler = new \Leafo\ScssPhp\Compiler();
 $scss_compiler->setImportPaths( get_template_directory() );
 $scss_compiler->setFormatter( \Leafo\ScssPhp\Formatter\Expanded::class );

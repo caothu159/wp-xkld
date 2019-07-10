@@ -31,20 +31,20 @@ function create_image_fly( $image_name, $image_content = '' ) {
 
     $filename        = "$image_name-img.jpg";
     $hashed_filename = md5( $filename . uniqid() ) . '_' . $filename;
-// @new
+    // @new
     $image_upload = file_put_contents( $upload_path . $hashed_filename, $decoded );
 
-//HANDLE UPLOADED FILE
+    //HANDLE UPLOADED FILE
     if ( ! function_exists( 'wp_handle_sideload' ) ) {
         require_once( ABSPATH . 'wp-admin/includes/file.php' );
     }
 
-// Without that I'm getting a debug error!?
+    // Without that I'm getting a debug error!?
     if ( ! function_exists( 'wp_get_current_user' ) ) {
         require_once( ABSPATH . 'wp-includes/pluggable.php' );
     }
 
-// @new
+    // @new
     $file             = array();
     $file['error']    = '';
     $file['tmp_name'] = $upload_path . $hashed_filename;
@@ -54,8 +54,8 @@ function create_image_fly( $image_name, $image_content = '' ) {
 
     wp_delete_file( $filename );
 
-// upload file to server
-// @new use $file instead of $image_upload
+    // upload file to server
+    // @new use $file instead of $image_upload
     $results = wp_handle_sideload( $file, array(
         'test_form'                => false,
         'unique_filename_callback' => function ( $dir, $name, $ext ) {

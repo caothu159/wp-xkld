@@ -1,7 +1,7 @@
 <?php
 
-while ( get_page_by_title( 'contact' ) != null ) {
-    wp_delete_post( get_page_by_title( 'contact' )->ID, true );
+while ( get_page_by_path( 'contact' ) != null ) {
+    wp_delete_post( get_page_by_path( 'contact' )->ID, true );
 }
 create_pages_fly( 'contact', <<<EOT
 <div class="col-md-5 form-left">
@@ -39,4 +39,4 @@ create_pages_fly( 'contact', <<<EOT
     </ul>
 </div>
 EOT
-);
+    , 'Liên hệ' );

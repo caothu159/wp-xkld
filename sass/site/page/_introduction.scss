@@ -1,0 +1,38 @@
+.introduction-content-area {
+
+}
+
+.introduction-main {
+    padding-bottom: 50px;
+    padding-top: 50px;
+    text-align: center;
+
+    ul {
+        @include clearfix;
+
+        display: block;
+        list-style: none;
+        padding: 0px;
+    }
+
+    li {
+        display: block;
+        float: left;
+        font-size: 16px;
+        line-height: 22px;
+        list-style: none;
+        margin: 0px;
+        padding: 0px 15px;
+        width: 25%;
+
+        span {
+            @include clearfix;
+
+            display: block;
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+    }
+}

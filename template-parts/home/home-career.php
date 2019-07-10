@@ -3,7 +3,7 @@ if ( ! is_front_page() ) {
     return;
 }
 
-$page_career = get_page_by_title( 'career' );
+$page_career = get_page_by_path( 'career' );
 if ( $page_career ) :
     $post = $page_career;
     setup_postdata( $post ); ?>
