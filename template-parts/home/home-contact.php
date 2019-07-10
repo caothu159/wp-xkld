@@ -2,7 +2,7 @@
 if ( ! is_front_page() ) {
     return;
 }
-$page_contact = get_page_by_title( 'contact' );
+$page_contact = get_page_by_path( 'contact' );
 if ( $page_contact ) :
     $post = $page_contact;
     setup_postdata( $post ); ?>
