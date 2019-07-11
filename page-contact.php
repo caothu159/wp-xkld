@@ -1,21 +1,27 @@
-<?php get_header(); ?>
+<?php get_header();
+
+while ( have_posts() ):
+    the_post(); ?>
 
     <section id="contact-primary" class="content-area contact-content-area">
         <main id="contact-main" class="site-main contact-main">
 
-            <?php
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="row form">
 
-            /* Start the Loop */
-            while ( have_posts() ):
-                the_post();
+                            <?php the_content(); ?>
 
-                get_template_part( 'template-parts/content/page', 'contact' );
-
-            endwhile; // End of the loop.
-            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </main><!-- #main -->
     </section><!-- #primary -->
 
 <?php
+endwhile; // End of the loop.
+
 get_footer();
