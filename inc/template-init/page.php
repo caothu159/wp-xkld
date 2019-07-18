@@ -1,12 +1,13 @@
 <?php
 
-//get_template_part( 'inc/template-init/page/home' );
-//get_template_part( 'inc/template-init/page/contact' );
-//get_template_part( 'inc/template-init/page/about' );
-//get_template_part( 'inc/template-init/page/career' );
-//get_template_part( 'inc/template-init/page/career', 'image' );
-//get_template_part( 'inc/template-init/page/info' );
-//get_template_part( 'inc/template-init/page/info', 'image' );
+get_template_part( 'inc/template-init/page/home' );
+get_template_part( 'inc/template-init/page/contact' );
+get_template_part( 'inc/template-init/page/about' );
+get_template_part( 'inc/template-init/page/career' );
+get_template_part( 'inc/template-init/page/career', 'image' );
+get_template_part( 'inc/template-init/page/info' );
+get_template_part( 'inc/template-init/page/info', 'image' );
+get_template_part( 'inc/template-init/page/trade' );
 
 function create_pages_fly( $page_name, $page_content = 'Starter content', $page_title = '' ) {
     // Insert the post into the database

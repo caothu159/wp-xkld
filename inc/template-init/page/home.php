@@ -1,7 +1,10 @@
 <?php
 
-while ( get_page_by_path( 'home' ) != null ) {
-    wp_delete_post( get_page_by_path( 'home' )->ID, true );
+//while ( get_page_by_path( 'home' ) != null ) {
+//    wp_delete_post( get_page_by_path( 'home' )->ID, true );
+//}
+if ( get_page_by_path( 'home' ) != null ) {
+    return;
 }
 create_pages_fly( 'home', <<<EOT
 <ul>

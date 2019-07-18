@@ -1,7 +1,10 @@
 <?php
 
-while ( get_page_by_path( 'contact' ) != null ) {
-    wp_delete_post( get_page_by_path( 'contact' )->ID, true );
+//while ( get_page_by_path( 'contact' ) != null ) {
+//    wp_delete_post( get_page_by_path( 'contact' )->ID, true );
+//}
+if ( get_page_by_path( 'contact' ) != null ) {
+    return;
 }
 create_pages_fly( 'contact', <<<EOT
 <div class="col-md-5 form-left">

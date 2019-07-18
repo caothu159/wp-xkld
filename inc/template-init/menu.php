@@ -1,12 +1,14 @@
 <?php
 
 $locations     = get_theme_mod( 'nav_menu_locations' );
-$jobs_category = get_category_by_slug( 'viec-lam' );
+$jobs_category = get_taxonomy( 'trade' );
 $news_category = get_category_by_slug( 'tin-tuc' );
 $about_page    = get_page_by_path( 'about' );
 $contact_page  = get_page_by_path( 'contact' );
 
-wp_delete_nav_menu( 'Main menu' );
+//dd( $jobs_category );
+
+//wp_delete_nav_menu( 'Main menu' );
 if ( ! wp_get_nav_menu_object( 'Main menu' ) ) {
     $main_menu_id = wp_create_nav_menu( 'Main menu' );
 
@@ -63,7 +65,7 @@ if ( ! wp_get_nav_menu_object( 'Main menu' ) ) {
     $locations['main'] = $main_menu_id;
 }
 
-wp_delete_nav_menu( 'Footer About' );
+//wp_delete_nav_menu( 'Footer About' );
 if ( ! wp_get_nav_menu_object( 'Footer About' ) ) {
     $about_menu_id = wp_create_nav_menu( 'Footer About' );
 
@@ -88,7 +90,7 @@ if ( ! wp_get_nav_menu_object( 'Footer About' ) ) {
     $locations['about'] = $about_menu_id;
 }
 
-wp_delete_nav_menu( 'Footer Menu' );
+//wp_delete_nav_menu( 'Footer Menu' );
 if ( ! wp_get_nav_menu_object( 'Footer Menu' ) ) {
     $footer_menu_id = wp_create_nav_menu( 'Footer Menu' );
 

@@ -1,6 +1,10 @@
 <?php
-while ( get_page_by_path( 'info' ) != null ) {
-    wp_delete_post( get_page_by_path( 'info' )->ID, true );
+
+//while ( get_page_by_path( 'info' ) != null ) {
+//    wp_delete_post( get_page_by_path( 'info' )->ID, true );
+//}
+if ( get_page_by_path( 'info' ) != null ) {
+    return;
 }
 create_pages_fly( 'info', <<<EOT
 <h3>Phỏng vấn tuyển dụng Xuất khẩu lao động Nhật Bản - Những điều cần lưu ý</h3>

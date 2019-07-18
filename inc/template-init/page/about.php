@@ -1,8 +1,10 @@
 <?php
-while ( get_page_by_path( 'about' ) != null ) {
-    wp_delete_post( get_page_by_path( 'about' )->ID, true );
+//while ( get_page_by_path( 'about' ) != null ) {
+//    wp_delete_post( get_page_by_path( 'about' )->ID, true );
+//}
+if ( get_page_by_path( 'about' ) != null ) {
+    return;
 }
-
 create_pages_fly( 'about', <<<EOT
 <p><strong>GIỚI THIỆU CÔNG TY</strong></p>
 <br />
