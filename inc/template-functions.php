@@ -308,54 +308,184 @@ if ( ! function_exists( 'the_breadcrumb' ) ) {
         echo breadcrumb();
     }
 }
+
 if ( ! function_exists( 'breadcrumb' ) ) {
     function breadcrumb() {
-        if ( is_front_page() ) {
-            return;
-        }
+        // Set variables for later use
+        $home_link        = home_url( '/' );
+        $home_text        = __( 'Home' );
+        $link_before      = '<li class="breadcrumb-item">';
+        $link_after       = '</li>';
+        $link             = $link_before . '<a href="%1$s">%2$s</a>' . $link_after;
+        $delimiter        = '';
+        $breadcrumb_trail = '';
+        $category_links   = '';
 
-        if ( is_page() ) {
-            return;
-        }
-        $return = '<nav aria-label="breadcrumb"><ol class="breadcrumb">';
+        /**
+         * Set our own $wp_the_query variable. Do not use the global variable version due to
+         * reliability
+         */
+        $wp_the_query   = $GLOBALS['wp_the_query'];
+        $queried_object = $wp_the_query->get_queried_object();
 
-        $return .= sprintf( '<li class="breadcrumb-item"><a href="%s">%s</a></li>',
-            get_option( 'home' ),
-            __( 'Trang chủ' )
-        );
+        // Handle single post requests which includes single pages, posts and attatchments
+        if ( is_singular() ) {
+            /**
+             * Set our own $post variable. Do not use the global variable version due to
+             * reliability. We will set $post_object variable to $GLOBALS['wp_the_query']
+             */
+            $post_object = sanitize_post( $queried_object );
 
-        // Check if the current page is a category, an archive or a single page. If so show the category or archive name.
-        if ( is_category() || is_single() ) {
-            foreach ( get_the_category() as $term ) {
-                $return .= sprintf( '<li class="breadcrumb-item"><a href="%s">%s</a></li>',
-                    get_term_link( $term ),
-                    $term->name
-                );
+            // Set variables
+            $title          = apply_filters( 'the_title', $post_object->post_title );
+            $parent         = $post_object->post_parent;
+            $post_type      = $post_object->post_type;
+            $post_id        = $post_object->ID;
+            $post_link      = $link_before . $title . $link_after;
+            $parent_string  = '';
+            $post_type_link = '';
+
+            if ( 'post' === $post_type ) {
+                // Get the post categories
+                $categories = get_the_category( $post_id );
+                if ( $categories ) {
+                    // Lets grab the first category
+                    $category = $categories[0];
+
+                    $category_links = get_category_parents( $category, true, '' );
+                    $category_links = str_replace( '<a', $link_before . '<a', $category_links );
+                    $category_links = str_replace( '</a>', '</a>' . $link_after, $category_links );
+                }
             }
-        } elseif ( is_archive() || is_single() ) {
-            if ( is_day() ) {
-                printf( __( '%s' ), get_the_date() );
-            } elseif ( is_month() ) {
-                printf( __( '%s' ),
-                    get_the_date( _x( 'F Y', 'monthly archives date format' ) ) );
-            } elseif ( is_year() ) {
-                printf( __( '%s', 'text_domain' ),
-                    get_the_date( _x( 'Y', 'yearly archives date format' ) ) );
+
+            if ( ! in_array( $post_type, [ 'post', 'page', 'attachment' ] ) ) {
+                if ( 'job' === $post_type ) {
+                    $trade_page     = get_page_by_path( 'nganh-nghe' );
+                    $taxonomy_link  = get_page_link( $trade_page );
+                    $post_type_link = sprintf( $link, esc_url( $taxonomy_link ), get_the_title( $trade_page ) );
+                    $terms          = wp_get_post_terms( $post_id, 'trade' );
+
+                    if ( is_array( $terms ) ) {
+                        foreach ( $terms as $term ) {
+                            $parent_term_links = [];
+
+                            if ( 0 !== $term->parent ) {
+                                $term_parent = $term->parent;
+                                $taxonomy    = get_taxonomy( $term->taxonomy );
+                                while ( $term_parent ) {
+                                    $term = get_term( $term_parent, $taxonomy->name );
+
+                                    $parent_term_links[] = sprintf( $link,
+                                        esc_url( get_term_link( $term ) ), $term->name );
+
+                                    $term_parent = $term->parent;
+                                }
+                            }
+
+                            $parent_term_links = array_reverse( $parent_term_links );
+                            $parent_term_links = implode( '', $parent_term_links );
+                            $post_type_link    .= $parent_term_links;
+                            $post_type_link    .= sprintf( $link, esc_url( get_term_link( $term ) ), $term->name );
+                        }
+                    }
+
+                } else {
+                    $post_type_object = get_post_type_object( $post_type );
+                    $archive_link     = esc_url( get_post_type_archive_link( $post_type ) );
+                    $post_type_link   = sprintf( $link, $archive_link, $post_type_object->labels->singular_name );
+                }
+            }
+
+            // Get post parents if $parent !== 0
+            if ( 0 !== $parent ) {
+                $parent_links = [];
+                while ( $parent ) {
+                    $post_parent = get_post( $parent );
+
+                    $parent_links[] = sprintf( $link, esc_url( get_permalink( $post_parent->ID ) ),
+                        get_the_title( $post_parent->ID ) );
+
+                    $parent = $post_parent->post_parent;
+                }
+
+                $parent_links = array_reverse( $parent_links );
+
+                $parent_string = implode( $delimiter, $parent_links );
+            }
+
+            // Lets build the breadcrumb trail
+            if ( $parent_string ) {
+                $breadcrumb_trail = $parent_string . $post_link;
             } else {
-                _e( 'Blog Archives' );
+                $breadcrumb_trail = $post_link;
+            }
+
+            if ( $post_type_link ) {
+                $breadcrumb_trail = $post_type_link . $breadcrumb_trail;
+            }
+
+            if ( $category_links ) {
+                $breadcrumb_trail = $category_links . $breadcrumb_trail;
             }
         }
 
-        // If the current page is a single post, show its title with the separator
-        if ( is_single() ) {
-            $return .= sprintf( '<li class="breadcrumb-item active" aria-current="page">%s</li>',
-                get_the_title()
-            );
+        // Handle archives which includes category-, tag-, taxonomy-, date-, custom post type archives and author archives
+        if ( is_archive() ) {
+            if ( is_category() || is_tag() || is_tax() ) {
+                // Set the variables for this section
+                $term               = get_term( $queried_object );
+                $taxonomy           = get_taxonomy( $term->taxonomy );
+                $current_term_link  = sprintf( $link, esc_url( get_term_link( $term ) ), $term->name );
+                $parent_term_string = '';
+
+                if ( is_array( $taxonomy->object_type ) && sizeof( $taxonomy->object_type ) > 0 ) {
+                    if ( $taxonomy_link = get_post_type_archive_link( $taxonomy->object_type[0] ) ) {
+                        $parent_term_string .= sprintf( $link,
+                            esc_url( $taxonomy_link ),
+                            $taxonomy->labels->singular_name );
+                    } elseif ( in_array( 'job', $taxonomy->object_type ) ) {
+                        $trade_page         = get_page_by_path( 'nganh-nghe' );
+                        $taxonomy_link      = get_page_link( $trade_page );
+                        $parent_term_string .= sprintf(
+                            $link,
+                            esc_url( $taxonomy_link ),
+                            get_the_title( $trade_page )
+                        );
+                    }
+                }
+
+                if ( 0 !== $term->parent ) {
+                    $term_parent       = $term->parent;
+                    $parent_term_links = [];
+                    while ( $term_parent ) {
+                        $term = get_term( $term_parent, $taxonomy->name );
+
+                        $parent_term_links[] = sprintf( $link, esc_url( get_term_link( $term ) ), $term->name );
+
+                        $term_parent = $term->parent;
+                    }
+
+                    $parent_term_links  = array_reverse( $parent_term_links );
+                    $parent_term_string = implode( '', $parent_term_links );
+                }
+
+                if ( $parent_term_string ) {
+                    $breadcrumb_trail = $parent_term_string . $current_term_link;
+                } else {
+                    $breadcrumb_trail = $current_term_link;
+                }
+
+            }
         }
 
-        $return .= '</ol></nav>';
+        $breadcrumb_output_link = '<nav aria-label="breadcrumb"><ol class="breadcrumb">';
 
-        return $return;
+        $breadcrumb_output_link .= sprintf( $link, $home_link, $home_text );
+        $breadcrumb_output_link .= $breadcrumb_trail;
+
+        $breadcrumb_output_link .= '</ol></nav><!-- .breadcrumbs -->';
+
+        return $breadcrumb_output_link;
     }
 }
 

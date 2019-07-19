@@ -35,6 +35,7 @@ function cptui_register_my_cpts() {
         "has_archive"           => false,
         "show_in_menu"          => true,
         "show_in_nav_menus"     => true,
+        "menu_position"         => 2,
         "exclude_from_search"   => false,
         "capability_type"       => "post",
         "map_meta_cap"          => true,
@@ -56,26 +57,26 @@ function cptui_register_my_taxes() {
      */
 
     $labels = array(
-        "name"          => __( "Trade", "custom-post-type-ui" ),
-        "singular_name" => __( "Trade", "custom-post-type-ui" ),
+        "name"          => __( "Trade" ),
+        "singular_name" => __( "Ngành nghề" ),
     );
 
     $args = array(
-        "label"                 => __( "Trade", "custom-post-type-ui" ),
+        "label"                 => __( "Trade" ),
         "labels"                => $labels,
         "public"                => true,
         "publicly_queryable"    => true,
-        "hierarchical"          => false,
+        "hierarchical"          => true,
         "show_ui"               => true,
         "show_in_menu"          => true,
         "show_in_nav_menus"     => true,
         "query_var"             => true,
         "rewrite"               => array( 'slug' => 'nganh-nghe', 'with_front' => true, ),
-        "show_admin_column"     => false,
+        "show_admin_column"     => true,
         "show_in_rest"          => true,
         "rest_base"             => "trade",
         "rest_controller_class" => "WP_REST_Terms_Controller",
-        "show_in_quick_edit"    => false,
+        "show_in_quick_edit"    => true,
     );
     register_taxonomy( "trade", array( "job" ), $args );
 }

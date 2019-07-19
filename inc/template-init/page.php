@@ -11,7 +11,7 @@ get_template_part( 'inc/template-init/page/trade' );
 
 function create_pages_fly( $page_name, $page_content = 'Starter content', $page_title = '' ) {
     // Insert the post into the database
-    wp_insert_post( array(
+    return wp_insert_post( array(
         'post_title'   => $page_title ?: $page_name,
         'post_content' => $page_content,
         'post_status'  => 'publish',
