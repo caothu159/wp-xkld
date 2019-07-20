@@ -42,30 +42,31 @@ if ( ! function_exists( 'themePostedBy' ) ):
     }
 endif;
 
-if ( ! function_exists( 'themePostThumbnail' ) ):
+if ( ! function_exists( 'theme_post_thumbnail' ) ):
 
-    function themePostThumbnail() {
+    function theme_post_thumbnail() {
         if ( ! theme_can_show_post_thumbnail() ) {
             return;
         }
 
-        if ( is_singular() ):
-            $thumbnail = get_the_post_thumbnail();
-            echo <<<EOT
+        if ( is_singular() ) :
+            ?>
+
             <figure class="post-thumbnail">
-                $thumbnail
-            </figure>
-EOT;
-        else:
-            $thumbnail = get_the_post_thumbnail( 'post-thumbnail' );
-            $permalink = esc_url( apply_filters( 'the_permalink', get_permalink( $post ), $post ) );
-            echo <<<EOT
+                <?php the_post_thumbnail(); ?>
+            </figure><!-- .post-thumbnail -->
+
+        <?php
+        else :
+            ?>
+
             <figure class="post-thumbnail">
-                <a class="post-thumbnail-inner" href="$permalink" aria-hidden="true" tabindex="-1">
-                    $thumbnail
+                <a class="post-thumbnail-inner" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+                    <?php the_post_thumbnail( 'post-thumbnail' ); ?>
                 </a>
             </figure>
-EOT;
+
+        <?php
         endif; // End is_singular().
     }
 endif;
