@@ -47,6 +47,8 @@ function cptui_register_my_cpts() {
     );
 
     register_post_type( "job", $args );
+
+    add_post_type_support( 'job', 'excerpt' );
 }
 
 add_action( 'init', 'cptui_register_my_taxes' );

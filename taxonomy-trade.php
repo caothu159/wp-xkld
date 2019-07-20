@@ -16,15 +16,15 @@
 get_header();
 ?>
 
-    <section id="primary" class="content-area">
-        <main id="main" class="site-main">
+    <section id="primary" class="content-area trade-content-area container">
+        <main id="main" class="site-main trade-site-main">
 
             <?php
             if ( have_posts() ) {
 
                 while ( have_posts() ) {
                     the_post();
-                    get_template_part( 'template-parts/content/content' );
+                    get_template_part( 'template-parts/content/trade', 'excerpt' );
                 }
 
             } else {

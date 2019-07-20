@@ -25,7 +25,7 @@
         ?>
     </header><!-- .entry-header -->
 
-    <?php themePostThumbnail(); ?>
+    <?php theme_post_thumbnail(); ?>
 
     <div class="entry-content">
         <?php

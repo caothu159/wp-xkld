@@ -1,8 +1,8 @@
 <?php
 
-while ( get_page_by_path( 'nganh-nghe' ) != null ) {
-    wp_delete_post( get_page_by_path( 'nganh-nghe' )->ID, true );
-}
+//while ( get_page_by_path( 'nganh-nghe' ) != null ) {
+//    wp_delete_post( get_page_by_path( 'nganh-nghe' )->ID, true );
+//}
 if ( get_page_by_path( 'nganh-nghe' ) != null ) {
     return;
 }

@@ -1,12 +1,10 @@
 <?php
 
 $locations     = get_theme_mod( 'nav_menu_locations' );
-$jobs_category = get_taxonomy( 'trade' );
+$jobs_category = get_page_by_path( 'nganh-nghe' );
 $news_category = get_category_by_slug( 'tin-tuc' );
 $about_page    = get_page_by_path( 'about' );
 $contact_page  = get_page_by_path( 'contact' );
-
-//dd( $jobs_category );
 
 //wp_delete_nav_menu( 'Main menu' );
 if ( ! wp_get_nav_menu_object( 'Main menu' ) ) {
@@ -19,11 +17,11 @@ if ( ! wp_get_nav_menu_object( 'Main menu' ) ) {
     ) );
 
     wp_update_nav_menu_item( $main_menu_id, 0, array(
-        'menu-item-title'     => __( 'Đơn hàng đi Nhật' ),
-        'menu-item-url'       => get_category_link( $jobs_category->term_id ),
-        'menu-item-object-id' => $jobs_category->term_id,
-        'menu-item-object'    => 'category',
-        'menu-item-type'      => 'taxonomy',
+        'menu-item-title'     => __( 'Đơn hàng đi Singapore' ),
+        'menu-item-url'       => get_page_link( $jobs_category->ID ),
+        'menu-item-object-id' => $jobs_category->ID,
+        'menu-item-object'    => 'page',
+        'menu-item-type'      => 'post_type',
         'menu-item-status'    => 'publish'
     ) );
 
@@ -38,7 +36,7 @@ if ( ! wp_get_nav_menu_object( 'Main menu' ) ) {
 
     wp_update_nav_menu_item( $main_menu_id, 0, array(
         'menu-item-title'     => __( 'giới thiệu' ),
-        'menu-item-url'       => get_category_link( $about_page->ID ),
+        'menu-item-url'       => get_page_link( $about_page->ID ),
         'menu-item-object-id' => $about_page->ID,
         'menu-item-object'    => 'page',
         'menu-item-type'      => 'post_type',
@@ -47,7 +45,7 @@ if ( ! wp_get_nav_menu_object( 'Main menu' ) ) {
 
     wp_update_nav_menu_item( $main_menu_id, 0, array(
         'menu-item-title'     => __( 'Liên hệ' ),
-        'menu-item-url'       => get_category_link( $contact_page->ID ),
+        'menu-item-url'       => get_page_link( $contact_page->ID ),
         'menu-item-object-id' => $contact_page->ID,
         'menu-item-object'    => 'page',
         'menu-item-type'      => 'post_type',
@@ -71,7 +69,7 @@ if ( ! wp_get_nav_menu_object( 'Footer About' ) ) {
 
     wp_update_nav_menu_item( $about_menu_id, 0, array(
         'menu-item-title'     => __( 'Giới thiệu' ),
-        'menu-item-url'       => get_category_link( $about_page->ID ),
+        'menu-item-url'       => get_page_link( $about_page->ID ),
         'menu-item-object-id' => $about_page->ID,
         'menu-item-object'    => 'page',
         'menu-item-type'      => 'post_type',
@@ -95,11 +93,11 @@ if ( ! wp_get_nav_menu_object( 'Footer Menu' ) ) {
     $footer_menu_id = wp_create_nav_menu( 'Footer Menu' );
 
     wp_update_nav_menu_item( $footer_menu_id, 0, array(
-        'menu-item-title'     => __( 'Đơn hàng đi Nhật' ),
-        'menu-item-url'       => get_category_link( $jobs_category->term_id ),
-        'menu-item-object-id' => $jobs_category->term_id,
-        'menu-item-object'    => 'category',
-        'menu-item-type'      => 'taxonomy',
+        'menu-item-title'     => __( 'Đơn hàng đi Singapore' ),
+        'menu-item-url'       => get_page_link( $jobs_category->ID ),
+        'menu-item-object-id' => $jobs_category->ID,
+        'menu-item-object'    => 'page',
+        'menu-item-type'      => 'post_type',
         'menu-item-status'    => 'publish'
     ) );
 
