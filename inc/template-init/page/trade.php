@@ -7,7 +7,7 @@ if ( get_page_by_path( 'nganh-nghe' ) != null ) {
     return;
 }
 $page_ID = create_pages_fly( 'nganh-nghe', <<<EOT
-<h3>Danh sách đơn hàng</h3>
+Danh sách đơn hàng đi Singapore
 EOT
     , 'Đơn hàng đi Singapore' );
 

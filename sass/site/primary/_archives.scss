@@ -64,15 +64,37 @@
 }
 
 .trade-content-area {
+    padding-bottom: 40px;
+    padding-top: 40px;
+
+    .trade-content {
+        font-size: 34px;
+        font-weight: 700;
+        text-align: center;
+    }
+
     article {
         background: #ffffff;
         border-radius: 15px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+
+        + article {
+            margin-top: 25px;
+        }
+    }
+
+    .entry-body {
+        position: relative;
+    }
+
+    .more-link {
+        position: absolute;
+        bottom: 20px;
+        right: 25px;
     }
 
     .entry-title {
         font-size: 20px;
-        margin-bottom: 15px;
     }
 
     .entry-content {

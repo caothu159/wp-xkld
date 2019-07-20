@@ -132,14 +132,12 @@
 
         .more-link {
             @include link-transition;
-            display: inline;
-            color: inherit;
-
-            &:after {
-                content: "\02192";
-                display: inline-block;
-                margin-left: 0.5em;
-            }
+            color: #ff0000;
+            display: block;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
 
             &:hover {
                 color: $color__link;
