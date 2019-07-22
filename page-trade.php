@@ -13,9 +13,14 @@ $args = array(
 
     <section id="primary" class="content-area trade-content-area container">
         <main id="main" class="site-main trade-site-main">
+            <div class="trade-content">
+                <?php while ( have_posts() ) {
+                    the_post();
+                    the_content();
+                } ?>
+            </div>
 
-            <?php
-            $wp_query = new WP_Query( $args );
+            <?php $wp_query = new WP_Query( $args );
             if ( $wp_query->have_posts() ) {
 
                 while ( $wp_query->have_posts() ) {
@@ -26,8 +31,7 @@ $args = array(
                 }
             } else {
                 get_template_part( 'template-parts/content/content', 'none' );
-            }
-            ?>
+            } ?>
 
         </main><!-- #main -->
     </section><!-- #primary -->

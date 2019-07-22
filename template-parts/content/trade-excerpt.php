@@ -11,16 +11,17 @@
 
 ; ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'row' ); ?>>
-    <div class="entry-thumbnail col-md-4">
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'row overflow-hidden' ); ?>>
+    <div class="entry-thumbnail col-md-4 p-md-0">
         <?php theme_post_thumbnail(); ?>
     </div><!-- .entry-thumbnail -->
 
-    <div class="entry-body col">
+    <div class="entry-body col pr-md-2">
 
         <header class="entry-header">
             <?php
-            the_title( sprintf( '<h3 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ),
+            the_title( sprintf( '<h3 class="entry-title mt-2 mb-2"><a href="%s" rel="bookmark">',
+                esc_url( get_permalink() ) ),
                 '</a></h3>' );
             ?>
         </header><!-- .entry-header -->
@@ -38,6 +39,7 @@
             $the_excerpt .= "</ul>";
             echo $the_excerpt;
             ?>
+            <a class="more-link" href="<?php echo esc_url( get_permalink() ) ?>"><?php _e( 'xem thêm' ) ?></a>
         </div><!-- .entry-content -->
 
     </div><!-- .entry-body -->

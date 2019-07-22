@@ -2,28 +2,29 @@
 if ( ! is_front_page() ) {
     return;
 }
-$page_contact = get_page_by_path( 'contact' );
-if ( $page_contact ) :
-    $post = $page_contact;
-    setup_postdata( $post ); ?>
+$args = array(
+    'post_type' => 'job',
+); ?>
 
-    <section id="contact-primary" class="content-area contact-content-area">
-        <main id="contact-main" class="site-main contact-main">
+<section id="primary" class="trade-content-area container">
+    <main id="main" class="trade-site-main row">
+        <h1 class="col-12 text-center text-uppercase">Các đơn hàng nổi bật</h1>
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-10">
-                        <div class="row form">
+        <?php $wp_query = new WP_Query( $args );
+        if ( $wp_query->have_posts() ) {
 
-                            <?php the_content(); ?>
+            while ( $wp_query->have_posts() ) {
+                $wp_query->the_post();
 
-                        </div>
-                    </div>
-                </div>
-            </div>
+                get_template_part( 'template-parts/content/trade', 'home' );
 
-        </main><!-- #main -->
-    </section><!-- #primary -->
+            }
+        } ?>
 
-    <?php wp_reset_postdata(); ?>
-<?php endif; ?>
+        <div class="col-12 mt-3">
+            <a class="all-link" href="<?php echo esc_url( get_page_link( get_page_by_path( 'nganh-nghe' ) ) ) ?>">
+                <?php _e( 'xem tất cả' ) ?>
+            </a>
+        </div>
+    </main><!-- #main -->
+</section><!-- #primary -->

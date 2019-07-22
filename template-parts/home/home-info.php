@@ -7,8 +7,8 @@ $page_info = get_page_by_path( 'info' );
 if ( $page_info ) :
     $post = $page_info;
     setup_postdata( $post ); ?>
-    <section id="info-primary" class="content-area info-content-area bg-white">
-        <main id="info-main" class="site-main info-main container clearfix">
+    <section id="info-primary" class="info-content-area bg-white">
+        <main id="info-main" class="info-main container clearfix">
             <div class="row">
 
                 <?php the_title( '<h1 class="entry-title col-12 text-center">', '</h1>' ); ?><!-- .entry-title -->

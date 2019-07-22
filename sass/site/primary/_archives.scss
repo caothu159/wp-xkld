@@ -64,15 +64,65 @@
 }
 
 .trade-content-area {
+    padding-bottom: 40px;
+    padding-top: 40px;
+
+    .trade-content {
+        font-size: 34px;
+        font-weight: 700;
+        text-align: center;
+    }
+
     article {
         background: #ffffff;
         border-radius: 15px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+
+        + article {
+            margin-top: 25px;
+        }
+    }
+
+    .entry-body {
+        position: relative;
+
+        .home & {
+            padding-bottom: 15px;
+            padding-top: 15px;
+        }
+    }
+
+    .more-link {
+        body:not(.home) & {
+            position: absolute;
+            bottom: 20px;
+            right: 25px;
+        }
+
+        .home & {
+            text-align: center;
+        }
+    }
+
+    .all-link {
+        background: linear-gradient(to right, #cc0202, red);
+        border-radius: 20px;
+        display: block;
+        line-height: 24px;
+        margin: auto;
+        max-width: 140px;
+        padding-bottom: 7px;
+        padding-top: 7px;
+        text-align: center;
+        text-transform: uppercase;
+
+        &:hover {
+            color: #ffffff;
+        }
     }
 
     .entry-title {
         font-size: 20px;
-        margin-bottom: 15px;
     }
 
     .entry-content {
