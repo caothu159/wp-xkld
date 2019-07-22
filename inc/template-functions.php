@@ -489,11 +489,6 @@ if ( ! function_exists( 'breadcrumb' ) ) {
     }
 }
 
-if ( ! function_exists( 'the_trade' ) ) {
-    function the_trade() {
-    }
-}
-
 if ( ! function_exists( 'dd' ) ) {
     function dd() {
         $args = func_get_args();

@@ -85,12 +85,40 @@
 
     .entry-body {
         position: relative;
+
+        .home & {
+            padding-bottom: 15px;
+            padding-top: 15px;
+        }
     }
 
     .more-link {
-        position: absolute;
-        bottom: 20px;
-        right: 25px;
+        body:not(.home) & {
+            position: absolute;
+            bottom: 20px;
+            right: 25px;
+        }
+
+        .home & {
+            text-align: center;
+        }
+    }
+
+    .all-link {
+        background: linear-gradient(to right, #cc0202, red);
+        border-radius: 20px;
+        display: block;
+        line-height: 24px;
+        margin: auto;
+        max-width: 140px;
+        padding-bottom: 7px;
+        padding-top: 7px;
+        text-align: center;
+        text-transform: uppercase;
+
+        &:hover {
+            color: #ffffff;
+        }
     }
 
     .entry-title {

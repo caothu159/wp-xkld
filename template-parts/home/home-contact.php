@@ -7,8 +7,8 @@ if ( $page_contact ) :
     $post = $page_contact;
     setup_postdata( $post ); ?>
 
-    <section id="contact-primary" class="content-area contact-content-area">
-        <main id="contact-main" class="site-main contact-main">
+    <section id="contact-primary" class="contact-content-area">
+        <main id="contact-main" class="contact-main">
 
             <div class="container">
                 <div class="row">
