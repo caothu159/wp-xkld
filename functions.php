@@ -100,6 +100,8 @@ function theme_enqueue() {
     wp_enqueue_style( 'theme-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
     wp_enqueue_script( 'theme-stop-back', get_theme_file_uri( '/js/stop-back.js' ), array(),
         wp_get_theme()->get( 'Version' ), true );
+    wp_enqueue_script( 'theme-bootstrap', get_theme_file_uri( '/js/bootstrap.js' ), array(),
+        wp_get_theme()->get( 'Version' ), true );
 
     if ( has_nav_menu( 'main' ) ) {
         wp_enqueue_script( 'theme-fixed-menu', get_theme_file_uri( '/js/fixed-menu.js' ), array(), '1.0', true );

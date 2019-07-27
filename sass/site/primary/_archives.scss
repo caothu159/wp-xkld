@@ -78,9 +78,17 @@
         border-radius: 15px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 
-        + article {
-            margin-top: 25px;
+        body:not(.home) & {
+            ~ article {
+                margin-top: 30px;
+            }
+
         }
+
+        .home & {
+            margin-top: 30px;
+        }
+
     }
 
     .entry-body {

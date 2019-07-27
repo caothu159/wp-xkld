@@ -1,0 +1,30 @@
+body.home {
+    .trade-content-area {
+
+        .nav-pills {
+            display: block;
+            text-align: center;
+        }
+
+        .nav-item {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .nav-link {
+            border-radius: 21px;
+            color: #666666;
+            font-size: 16px;
+            line-height: 21px;
+            padding: 8px 25px;
+            text-transform: uppercase;
+
+            &.active,
+            &:hover {
+                background: linear-gradient(to right, #cc0202, red);
+                color: #fff;
+            }
+        }
+    }
+
+}
