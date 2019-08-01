@@ -10,7 +10,7 @@
  */
 
 ; ?>
-<div class="col-4">
+<div class="col-6 col-md-4">
     <article id="post-<?php the_ID(); ?>" <?php post_class( 'overflow-hidden' ); ?>>
         <div class="entry-thumbnail">
             <?php theme_post_thumbnail(); ?>

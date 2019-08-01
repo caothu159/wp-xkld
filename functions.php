@@ -95,6 +95,8 @@ function theme_widgets_init() {
 
 add_action( 'widgets_init', 'theme_widgets_init' );
 
+add_action( 'nav_menu_css_class', 'theme_nav_menu_css_class', 10, 2 );
+
 add_action( 'wp_enqueue_scripts', 'theme_enqueue' );
 function theme_enqueue() {
 //    wp_enqueue_style( 'theme-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
