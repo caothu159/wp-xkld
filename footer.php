@@ -22,7 +22,7 @@
 
             <?php if ( is_active_sidebar( 'sidebar-address' ) ) : ?>
 
-                <aside class="widget-area sidebar-address col" role="complementary"
+                <aside class="widget-area sidebar-address col-md-4" role="complementary"
                        aria-label="<?php esc_attr_e( 'Footer' ); ?>">
                     <div class="widget-column footer-widget-address">
                         <?php dynamic_sidebar( 'sidebar-address' ); ?>
@@ -32,7 +32,7 @@
             <?php endif; ?>
 
             <?php if ( has_nav_menu( 'about' ) ) : ?>
-                <nav class="footer-navigation col" aria-label="<?php esc_attr_e( 'About Menu' ); ?>">
+                <nav class="footer-navigation col-md-4" aria-label="<?php esc_attr_e( 'About Menu' ); ?>">
                     <span class="footer-navigation-title text-uppercase d-block mb-4">
                         <?php _e( 'về chúng tôi' ); ?>
                     </span>
@@ -47,7 +47,7 @@
             <?php endif; ?>
 
             <?php if ( has_nav_menu( 'footer' ) ) : ?>
-                <nav class="footer-navigation col" aria-label="<?php esc_attr_e( 'Footer Menu' ); ?>">
+                <nav class="footer-navigation col-md-4" aria-label="<?php esc_attr_e( 'Footer Menu' ); ?>">
                     <span class="footer-navigation-title text-uppercase d-block mb-4">
                         <?php _e( 'xuất khẩu lao động Singapore' ); ?>
                     </span>

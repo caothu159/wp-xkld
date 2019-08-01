@@ -28,6 +28,14 @@
         &.current-menu-item a {
             color: $color__link-hover;
         }
+
+        &:not(.tel) {
+            display: none;
+
+            @include media(desktop) {
+                display: initial;
+            }
+        }
     }
 
     .tel {

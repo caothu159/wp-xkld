@@ -15,7 +15,7 @@
     <nav class="main-navigation navbar navbar-expand-md" style="visibility: hidden;">
         <div class="container">
 
-            <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+            <div class="d-flex justify-content-between align-items-center w-100">
                 <?php get_template_part( 'template-parts/header/header', 'menu' ); ?>
             </div>
         </div>
@@ -24,7 +24,7 @@
     <nav class="main-navigation navbar fixed-top navbar-expand-md navbar-dark bg-dark">
         <div class="container">
 
-            <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+            <div class="d-flex justify-content-between align-items-center w-100">
                 <?php get_template_part( 'template-parts/header/header', 'menu' ); ?>
             </div>
         </div>

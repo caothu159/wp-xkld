@@ -488,3 +488,24 @@ if ( ! function_exists( 'breadcrumb' ) ) {
         return $breadcrumb_output_link;
     }
 }
+
+function theme_nav_menu_css_class( $classes, $item ) {
+
+    global $post;
+
+    try {
+        if ( ! in_array( 'trade', get_post_taxonomies( $post ) ) ) {
+            return $classes;
+        }
+        $menu_slug         = get_page_by_path( 'nganh-nghe' )->guid;
+        $menu_slug_current = strtolower( trim( $item->url ) );
+        if ( $menu_slug == $menu_slug_current ) {
+            $classes[] = 'current-menu-item';
+        }
+    } catch ( Exception $e ) {
+        return $classes;
+    }
+
+    return $classes;
+
+}

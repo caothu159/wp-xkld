@@ -13,13 +13,13 @@ if ( $page_info ) :
 
                 <?php the_title( '<h1 class="entry-title col-12 text-center">', '</h1>' ); ?><!-- .entry-title -->
 
-                <div class="col-6">
+                <div class="col-12 col-md-6">
                     <figure class="entry-thumbnail">
                         <?php the_post_thumbnail(); ?>
                     </figure><!-- .entry-thumbnail -->
                 </div>
 
-                <div class="entry-content col-6">
+                <div class="entry-content col-12 col-md-6">
                     <?php the_content(); ?>
                 </div><!-- .entry-content -->
 
